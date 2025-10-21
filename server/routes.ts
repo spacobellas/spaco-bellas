@@ -1,10 +1,10 @@
 import type { Express } from "express";
-import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertLeadB2BSchema, insertLandingLeadSchema } from "@shared/schema";
 import { z } from "zod";
 
-export async function registerRoutes(app: Express): Promise<Server> {
+// Retorna void ao invés de Server - não criamos HTTP server para serverless
+export async function registerRoutes(app: Express): Promise<void> {
   app.get("/api/service-categories", async (req, res) => {
     try {
       const categories = await storage.getAllServiceCategories();
@@ -39,7 +39,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/services/grouped", async (req, res) => {
     try {
       const categories = await storage.getAllServiceCategories();
-      
       const grouped = await Promise.all(
         categories.map(async (category) => {
           const services = await storage.getServicesByCategory(category.id);
@@ -52,7 +51,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
           };
         })
       );
-      
       res.json(grouped);
     } catch (error) {
       console.error("Error fetching grouped services:", error);
@@ -77,9 +75,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ success: true, leadId: lead.id });
     } catch (error) {
       if (error instanceof z.ZodError) {
-        res.status(400).json({ 
-          error: "Validation error", 
-          details: error.errors 
+        res.status(400).json({
+          error: "Validation error",
+          details: error.errors
         });
       } else {
         console.error("Error creating B2B lead:", error);
@@ -95,9 +93,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ success: true, leadId: lead.id });
     } catch (error) {
       if (error instanceof z.ZodError) {
-        res.status(400).json({ 
-          error: "Validation error", 
-          details: error.errors 
+        res.status(400).json({
+          error: "Validation error",
+          details: error.errors
         });
       } else {
         console.error("Error creating landing lead:", error);
@@ -115,7 +113,4 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(500).json({ error: "Failed to fetch testimonials" });
     }
   });
-
-  const httpServer = createServer(app);
-  return httpServer;
 }
