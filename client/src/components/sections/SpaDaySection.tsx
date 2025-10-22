@@ -25,7 +25,7 @@ const packages = [
     featured: false,
     color: "from-pink-400 to-pink-600",
     icon: Star,
-    badge: "Essencial",
+    badge: null,
     badgeColor: "bg-pink-500",
   },
   {
@@ -67,7 +67,7 @@ const packages = [
     featured: false,
     color: "from-amber-400 to-amber-600",
     icon: Crown,
-    badge: "Celebridade",
+    badge: null,
     badgeColor: "bg-amber-500",
   },
 ];

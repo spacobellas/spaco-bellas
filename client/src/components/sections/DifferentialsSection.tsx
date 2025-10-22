@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Sparkles, Heart, Camera, Clock, Home, Lightbulb } from "lucide-react";
+import { Sparkles, Heart, Camera, Clock, Home, Lightbulb, Gift } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const differentials = [
@@ -173,6 +173,50 @@ export function DifferentialsSection() {
                 </Card>
               );
             })}
+          </div>
+        </div>
+
+        {/* Elementos "Uau" - Toques emocionais */}
+        <div className="mb-12 md:mb-16">
+          <div className="text-center mb-8 md:mb-12">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+              Toques especiais que fazem a diferença
+            </h3>
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
+              Detalhes emocionais que transformam sua experiência em algo inesquecível
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+            <div className="flex items-start gap-4 p-6 bg-white rounded-xl border-2 border-purple-100 hover:border-pink-300 hover:shadow-lg transition-all duration-300 cursor-pointer">
+              <div className="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                <Heart className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">Mensagem Surpresa</h4>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">Receba uma mensagem especial da sua família durante a experiência</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4 p-6 bg-white rounded-xl border-2 border-purple-100 hover:border-purple-300 hover:shadow-lg transition-all duration-300 cursor-pointer">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                <Sparkles className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">Certificado Físico</h4>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">"Eu fui Celebridade Bellas" - leve para casa sua memória especial 💜</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4 p-6 bg-white rounded-xl border-2 border-purple-100 hover:border-amber-300 hover:shadow-lg transition-all duration-300 cursor-pointer">
+              <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                <Gift className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">Bombom Premium</h4>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">Finalização doce e especial para seu dia perfeito</p>
+              </div>
+            </div>
           </div>
         </div>
 

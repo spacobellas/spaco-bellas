@@ -21,7 +21,7 @@ export function HeroSection() {
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
       >
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm"
           style={{
             backgroundImage: `url(${heroImage})`,
           }}
@@ -44,8 +44,8 @@ export function HeroSection() {
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight px-2">
-              Viva o seu dia de estrela
+            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+              Toda mulher merece<br />um dia de estrela
             </h1>
 
             {/* Description */}
