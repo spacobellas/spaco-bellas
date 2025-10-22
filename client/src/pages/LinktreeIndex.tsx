@@ -58,7 +58,7 @@ export default function LinktreeLanding() {
   return (
     <div className="min-h-screen bg-pink-50 text-gray-800 flex flex-col items-center font-sans">
       {/* Hero Section com Background */}
-      <div className="relative w-full mb-12">
+      <div className="relative w-full mb-4">
         {/* Background Image Layer */}
         <div className="absolute inset-0 h-[500px] overflow-hidden">
           <img
@@ -71,7 +71,7 @@ export default function LinktreeLanding() {
         </div>
         
         {/* Content Layer */}
-        <div className="relative z-10 flex flex-col items-center pt-16 pb-20">
+        <div className="relative z-10 flex flex-col items-center pt-16 pb-6">
           <div className="w-36 h-36 rounded-full overflow-hidden mb-5 ring-4 ring-white shadow-2xl">
             <img
               src={spacoBellasLogo}
@@ -89,7 +89,7 @@ export default function LinktreeLanding() {
       </div>
 
       {/* Banners Section */}
-      <div className="w-full max-w-md space-y-5 mb-12">
+      <div className="-mt-2 w-full max-w-md space-y-5 mb-12">
         {links.map((link) => {
           const LinkComponent = link.external ? "a" : Link;
           const linkProps = link.external
