@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "wouter";
 import spacoBellasLogo from "./spacobellaslogo.jpg";
+import spacoBellasBackground from "./spaco.png";
 import { FaBuilding, FaStar, FaCrown, FaWhatsapp } from "react-icons/fa";
 
 interface LinkItem {
@@ -55,13 +56,13 @@ const links: LinkItem[] = [
 
 export default function LinktreeLanding() {
   return (
-    <div className="min-h-screen bg-pink-50 text-gray-800 flex flex-col items-center px-4 py-8 font-sans">
+    <div className="min-h-screen bg-pink-50 text-gray-800 flex flex-col items-center font-sans">
       {/* Hero Section com Background */}
       <div className="relative w-full mb-12">
         {/* Background Image Layer */}
         <div className="absolute inset-0 h-[500px] overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&h=800&fit=crop"
+            src={spacoBellasBackground}
             alt=""
             className="w-full h-full object-cover blur-[8px] scale-110"
           />
@@ -101,25 +102,36 @@ export default function LinktreeLanding() {
               {...linkProps}
               className="block w-full group cursor-pointer"
             >
-              <div className="relative h-44 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]">
+              {/* margem lateral aplicada no card, não no container */}
+              <div className="mx-4 sm:mx-6 relative h-44 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]">
                 {/* Background Image with Blur */}
                 <img
                   src={link.backgroundImage}
                   alt={link.title}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 blur-[2px]"
                 />
-                
+
                 {/* Gradient Overlay - Rosa e Roxo */}
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-900/80 via-pink-800/70 to-transparent"></div>
-                
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-900/80 via-pink-800/70 to-transparent" />
+
                 {/* Content */}
-                <div className={`relative h-full flex items-center ${link.textPosition === 'right' ? 'justify-end' : 'justify-start'} px-6`}>
-                  <div className={`${link.textPosition === 'right' ? 'text-right' : 'text-left'} flex ${link.textPosition === 'right' ? 'flex-row-reverse' : 'flex-row'} items-center gap-4 max-w-xs`}>
+                <div
+                  className={`relative h-full flex items-center ${
+                    link.textPosition === "right" ? "justify-end" : "justify-start"
+                  } px-6`}
+                >
+                  <div
+                    className={`${
+                      link.textPosition === "right" ? "text-right" : "text-left"
+                    } flex ${
+                      link.textPosition === "right" ? "flex-row-reverse" : "flex-row"
+                    } items-center gap-4 max-w-xs`}
+                  >
                     {/* Icon */}
                     <div className="text-white drop-shadow-2xl flex-shrink-0">
                       <link.Icon className="w-12 h-12" />
                     </div>
-                    
+
                     {/* Text */}
                     <div>
                       <h2 className="text-white font-black text-2xl md:text-3xl leading-tight mb-1 drop-shadow-2xl tracking-tight">
@@ -138,6 +150,7 @@ export default function LinktreeLanding() {
           );
         })}
       </div>
+
 
       {/* Social Media Icons */}
       <div className="flex items-center justify-center gap-8 mb-8 bg-white rounded-full px-12 py-4 shadow-lg border border-pink-200">
@@ -208,11 +221,18 @@ export default function LinktreeLanding() {
       </div>
 
       {/* Footer */}
-      <div className="text-center text-gray-500 text-sm space-y-1">
-        <div>R. Antônio Fortunato, 678 - Burgo Paulista, São Paulo <br /> 3 min do Metrô Patriarca</div>
+      <footer
+        className="mx-4 sm:mx-6 mt-12 mb-16 md:mb-24 text-center text-gray-500 text-sm space-y-1 rounded-2xl bg-white/70 backdrop-blur px-6 pt-6 pb-8"
+        style={{ paddingBottom: "calc(1rem + env(safe-area-inset-bottom, 0px))" }}
+      >
+        <div>
+          R. Antônio Fortunato, 678 - Burgo Paulista, São Paulo <br /> 3 min do Metrô Patriarca
+        </div>
         <div>WhatsApp: (11) 9.7682-0135</div>
-        <div className="pt-4 text-xs">© 2025 Spaço Bellas - Todos os direitos reservados</div>
-      </div>
+        <div className="pt-4 text-xs">
+          © 2025 Spaço Bellas - Todos os direitos reservados
+        </div>
+      </footer>
     </div>
   );
 }
