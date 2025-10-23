@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import spacoBellasLogo from "./spacobellaslogo.jpg";
 import spacoBellasBackground from "./spaco.png";
 import { FaBuilding, FaStar, FaCrown, FaWhatsapp, FaGem } from "react-icons/fa";
+import { Building2 } from "lucide-react";
 
 interface LinkItem {
   id: string;
@@ -53,12 +54,21 @@ const links: LinkItem[] = [
     Icon: FaCrown,
   },
   {
+    id: "empresas",
+    title: "BELLA EMPRESAS",
+    subtitle: "Bem‑estar, Propósito e Alta Performance no Seu Time",
+    href: "/empresas",
+    backgroundImage: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=400&fit=crop",
+    textPosition: "left",
+    Icon: Building2,
+  },
+  {
     id: "whatsapp",
     title: "ATENDIMENTO",
     subtitle: "WhatsApp Direto",
     href: "/whatsapp",
     backgroundImage: "https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=800&h=400&fit=crop",
-    textPosition: "left",
+    textPosition: "right",
     Icon: FaWhatsapp,
   },
 ];
