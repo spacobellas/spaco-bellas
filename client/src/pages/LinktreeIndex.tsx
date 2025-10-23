@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "wouter";
 import spacoBellasLogo from "./spacobellaslogo.jpg";
 import spacoBellasBackground from "./spaco.png";
-import { FaBuilding, FaStar, FaCrown, FaWhatsapp } from "react-icons/fa";
+import { FaBuilding, FaStar, FaCrown, FaWhatsapp, FaGem } from "react-icons/fa";
 
 interface LinkItem {
   id: string;
@@ -26,12 +26,21 @@ const links: LinkItem[] = [
     Icon: FaBuilding,
   },
   {
+    id: "mensal-bellas",
+    title: "PROGRAMA VIP BELLAS",
+    subtitle: "Planos Mensais Exclusivos",
+    href: "/mensal-bellas",
+    backgroundImage: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=400&fit=crop",
+    textPosition: "right",
+    Icon: FaGem,
+  },
+  {
     id: "celebridades",
     title: "SPA DAS CELEBRIDADES",
     subtitle: "Viva seu Dia de Estrela",
     href: "/celebridades",
     backgroundImage: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=400&fit=crop",
-    textPosition: "right",
+    textPosition: "left",
     Icon: FaStar,
   },
   {
@@ -40,7 +49,7 @@ const links: LinkItem[] = [
     subtitle: "Pré-Lançamento com Bônus Exclusivo",
     href: "/whatsapp/grupo-vip",
     backgroundImage: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=400&fit=crop",
-    textPosition: "left",
+    textPosition: "right",
     Icon: FaCrown,
   },
   {
@@ -49,7 +58,7 @@ const links: LinkItem[] = [
     subtitle: "WhatsApp Direto",
     href: "/whatsapp",
     backgroundImage: "https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=800&h=400&fit=crop",
-    textPosition: "right",
+    textPosition: "left",
     Icon: FaWhatsapp,
   },
 ];

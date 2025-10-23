@@ -1,3 +1,4 @@
+// src/App.tsx
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -11,24 +12,30 @@ import SpaCelebridades from "@/pages/SpaCelebridades";
 import WhatsAppRedirect from "@/pages/WhatsAppRedirect";
 import NotFound from "@/pages/not-found";
 
+// Nova página: Mulheres VIP Bellas
+// Certifique-se de ter criado src/pages/mensal-bellas.tsx conforme definido anteriormente.
+import MensalBellasPage from "@/pages/mensal-bellas";
+
 function Router() {
   return (
     <Switch>
       {/* Página principal - Linktree style */}
       <Route path="/" component={LinktreeIndex} />
-      
+
       {/* Página institucional completa */}
       <Route path="/institucional" component={Home} />
-      
+
       {/* Landing page do Spa das Celebridades */}
-      <Route path="/celebridades" component={SpaCelebridades} />
-      
+      <Route path="/spa-celebridades" component={SpaCelebridades} />
+
+      {/* NOVA: Programa Mulheres VIP Bellas */}
+      <Route path="/mensal-bellas" component={MensalBellasPage} />
+      {/* Alias opcional para campanhas/SEO */}
+      <Route path="/mulheres-vip-bellas" component={MensalBellasPage} />
+
       {/* WhatsApp - Direto */}
       <Route path="/whatsapp" component={WhatsAppRedirect} />
-      
-      {/* WhatsApp - Grupo VIP do Pré-Lançamento */}
-      <Route path="/whatsapp/grupo-vip" component={WhatsAppRedirect} />
-      
+
       {/* 404 */}
       <Route component={NotFound} />
     </Switch>

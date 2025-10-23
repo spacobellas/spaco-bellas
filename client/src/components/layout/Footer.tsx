@@ -205,9 +205,9 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 text-center text-gray-400 text-sm">
-          <p>© {currentYear} Spaço Bellas | Unidade Patriarca | 3min do Metrô Patriarca</p>
+          <p>© {currentYear} Spaço Bellas</p>
           <p className="mt-2">
-            Feito com 💜 por <span className="text-[var(--primary-purple)] font-medium">Start Tecnológico</span>
+            <p>Feito com 💜 por <a href="https://starttecnologico.com/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition">Start Tecnológico</a></p>
           </p>
         </div>
       </div>
