@@ -10,6 +10,7 @@ import LinktreeIndex from "@/pages/LinktreeIndex";
 import Home from "@/pages/Home";
 import SpaCelebridades from "@/pages/SpaCelebridades";
 import WhatsAppRedirect from "@/pages/WhatsAppRedirect";
+import EmpresasPage from "@/pages/empresas";
 import NotFound from "@/pages/not-found";
 
 // Nova página: Mulheres VIP Bellas
@@ -32,6 +33,8 @@ function Router() {
       <Route path="/mensal-bellas" component={MensalBellasPage} />
       {/* Alias opcional para campanhas/SEO */}
       <Route path="/mulheres-vip-bellas" component={MensalBellasPage} />
+
+      <Route path="/empresas" component={EmpresasPage} />
 
       {/* WhatsApp - Direto */}
       <Route path="/whatsapp" component={WhatsAppRedirect} />
