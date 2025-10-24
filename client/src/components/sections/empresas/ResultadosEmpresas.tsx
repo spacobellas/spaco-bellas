@@ -63,7 +63,7 @@ export function ResultadosEmpresas() {
     <section
       id="resultados"
       className="py-10 md:py-14"
-      style={{ backgroundColor: COLORS.lilacBg, color: COLORS.text }}
+      style={{ backgroundColor: "#FFFFFF", color: "#2F2F2F" }}
     >
       <div className="container mx-auto px-4">
         <div className="flex w-full items-center justify-center">

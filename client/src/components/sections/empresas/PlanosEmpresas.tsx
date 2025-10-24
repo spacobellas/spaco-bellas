@@ -70,7 +70,7 @@ const fmt = (v: number) =>
 
 export function PlanosEmpresas() {
   return (
-    <section id="pacotes" className="py-10 md:py-14" style={{ backgroundColor: COLORS.lilacBg, color: COLORS.text }}>
+    <section id="pacotes" className="py-10 md:py-14" style={{ backgroundColor: "#FFFFFF", color: "#2F2F2F" }}>
       <div className="container mx-auto px-4">
         <div className="flex w-full items-center justify-center">
           <span
@@ -138,7 +138,7 @@ export function PlanosEmpresas() {
                 <Button
                   asChild
                   className="w-full transition hover:brightness-[0.98] focus-visible:ring-2"
-                  style={{ backgroundColor: COLORS.primary, color: "#FFFFFF" }}
+                  style={{ backgroundColor: "#16A34A", color: "#FFFFFF" }}
                 >
                   <a
                     href={buildWAUrl(`Olá! Quero orçamento do pacote ${p.name}.`, {

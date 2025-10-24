@@ -16,7 +16,7 @@ const items = [
 export function FAQEmpresas() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="py-10 md:py-14" style={{ backgroundColor: COLORS.lilacBg }}>
+    <section id="faq" className="py-10 md:py-14" style={{ backgroundColor: "#FFFFFF" }}>
       <div className="container mx-auto px-4">
         <img src={cover} alt="" className="mx-auto h-28 w-full max-w-3xl rounded-xl object-cover" loading="lazy" />
         <h2 className="mt-4 text-2xl md:text-3xl font-semibold text-center" style={{ color: COLORS.gold }}>

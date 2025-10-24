@@ -72,7 +72,7 @@ function Pill({ label }: { label: string }) {
 
 export function BeneficiosEmpresas() {
   return (
-    <section className="py-10 md:py-14" style={{ backgroundColor: COLORS.lilacBg, color: COLORS.text }}>
+    <section className="py-10 md:py-14" style={{ backgroundColor: "#FFFFFF", color: "#2F2F2F" }}>
       <div className="container mx-auto px-4">
         <img src={cover} alt="" className="mx-auto h-28 w-full max-w-3xl rounded-xl object-cover" loading="lazy" />
         <header className="mx-auto max-w-3xl text-center mt-4">
