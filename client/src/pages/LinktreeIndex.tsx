@@ -13,8 +13,22 @@ interface LinkItem {
   external?: boolean;
   backgroundImage: string;
   textPosition: "left" | "right";
-  Icon: React.ComponentType<{ className?: string }>;
+  Icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
+  kind?: "whatsapp" | "instagram" | "spa" | "blog" | "agenda" | "default";
 }
+
+const PALETTE_BY_ID: Record<string, { base: string; accent: string }> = {
+  institucional:   { base: "#7C3AED", accent: "#A78BFA" }, // roxo
+  "mensal-bellas": { base: "#D97706", accent: "#F59E0B" }, // âmbar
+  celebridades:    { base: "#06B6D4", accent: "#22D3EE" }, // ciano
+  vip:             { base: "#E11D48", accent: "#FB7185" }, // rosa
+  empresas:        { base: "#0EA5E9", accent: "#38BDF8" }, // azul
+  whatsapp:        { base: "#16A34A", accent: "#22C55E" }, // verde
+  crm: { base: "#111827", accent: "#06B6D4" },
+};
+const paletteOf = (id: string) =>
+  PALETTE_BY_ID[id] ?? { base: "#334155", accent: "#64748B" };
+
 
 const links: LinkItem[] = [
   {
@@ -71,6 +85,16 @@ const links: LinkItem[] = [
     textPosition: "right",
     Icon: FaWhatsapp,
   },
+  {
+    id: "crm",
+    title: "CRM (Restrito)",
+    subtitle: "Acesso para colaboradores",
+    href: "https://bella-gestor.vercel.app", // se já é público com login
+    textPosition: "left",
+    backgroundImage: "none",
+    Icon: FaBuilding,
+    external: true, // abre em nova aba
+  },
 ];
 
 export default function LinktreeLanding() {
@@ -108,32 +132,26 @@ export default function LinktreeLanding() {
       </div>
 
       {/* Banners Section */}
-      <div className="-mt-2 w-full max-w-md space-y-5 mb-12">
+      <div className="-mt-2 w-full max-w-md space-y-6 mb-16">
         {links.map((link) => {
-          const LinkComponent = link.external ? "a" : Link;
+          const LinkComponent: React.ElementType = link.external ? "a" : Link;
           const linkProps = link.external
             ? { href: link.href, target: "_blank", rel: "noopener noreferrer" }
             : { href: link.href };
 
+          const pal = paletteOf(link.id);
+
           return (
-            <LinkComponent
-              key={link.id}
-              {...linkProps}
-              className="block w-full group cursor-pointer"
-            >
-              {/* margem lateral aplicada no card, não no container */}
-              <div className="mx-4 sm:mx-6 relative h-44 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]">
-                {/* Background Image with Blur */}
-                <img
-                  src={link.backgroundImage}
-                  alt={link.title}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 blur-[2px]"
-                />
-
-                {/* Gradient Overlay - Rosa e Roxo */}
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-900/80 via-pink-800/70 to-transparent" />
-
-                {/* Content */}
+            <LinkComponent key={link.id} {...linkProps} className="block w-full group">
+              <div
+                className="mx-4 sm:mx-6 relative h-44 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5"
+                style={{
+                  background: `linear-gradient(180deg, ${pal.accent} 0%, ${pal.base} 100%)`,
+                  border: `2px solid ${pal.accent}CC`,
+                  outline: `6px solid ${pal.accent}40`,
+                }}
+              >
+                {/* Conteúdo centralizado, sem CTA */}
                 <div
                   className={`relative h-full flex items-center ${
                     link.textPosition === "right" ? "justify-end" : "justify-start"
@@ -144,20 +162,29 @@ export default function LinktreeLanding() {
                       link.textPosition === "right" ? "text-right" : "text-left"
                     } flex ${
                       link.textPosition === "right" ? "flex-row-reverse" : "flex-row"
-                    } items-center gap-4 max-w-xs`}
+                    } items-center gap-4 w-full`}
                   >
-                    {/* Icon */}
-                    <div className="text-white drop-shadow-2xl flex-shrink-0">
-                      <link.Icon className="w-12 h-12" />
+                    {/* Ícone branco com sombra para legibilidade */}
+                    <div className="flex-shrink-0" style={{ color: "#FFFFFF" }}>
+                      <link.Icon
+                        className="w-12 h-12"
+                        style={{ filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.35))" }}
+                      />
                     </div>
 
-                    {/* Text */}
-                    <div>
-                      <h2 className="text-white font-black text-2xl md:text-3xl leading-tight mb-1 drop-shadow-2xl tracking-tight">
+                    {/* Textos em branco */}
+                    <div className="flex-1">
+                      <h2
+                        className="font-black text-2xl md:text-3xl leading-tight mb-1 tracking-tight text-white"
+                        style={{ textShadow: "0 1px 0 rgba(0,0,0,0.35)" }}
+                      >
                         {link.title}
                       </h2>
                       {link.subtitle && (
-                        <p className="text-pink-100 text-sm md:text-base font-semibold drop-shadow-lg">
+                        <p
+                          className="text-sm md:text-base font-semibold text-white"
+                          style={{ opacity: 0.95, textShadow: "0 1px 0 rgba(0,0,0,0.25)" }}
+                        >
                           {link.subtitle}
                         </p>
                       )}

@@ -11,6 +11,8 @@ const COLORS = {
   primary: "#8E5BAE",
 };
 
+const CTA_GREEN = "#16A34A"
+
 const WHATSAPP_NUMBER = "5511976820135";
 const buildWAUrl = (msg: string, utm?: Record<string, string>) => {
   const base = `https://wa.me/${WHATSAPP_NUMBER}`;
@@ -106,42 +108,14 @@ export function HeroVip({
             {subtitle}
           </p>
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button
-              asChild
-              className="w-full sm:w-auto"
-              style={{
-                backgroundColor: COLORS.primary,
-                color: "#FFFFFF",
-              }}
-            >
-              <a
-                href={buildWAUrl(whatsappMsg, {
-                  utm_source: "site",
-                  utm_medium: "mensal-bellas",
-                  utm_content: "hero_whatsapp",
-                })}
-                aria-label="Falar no WhatsApp sobre o Programa Mulheres VIP Bellas"
-              >
-                Falar no WhatsApp
-              </a>
-            </Button>
-
-            <Button
-              asChild
-              variant="outline"
-              className="w-full sm:w-auto border"
-              style={{
-                borderColor: COLORS.primary,
-                color: COLORS.primary,
-                backgroundColor: "#FFFFFF",
-              }}
-            >
-              <a href="#planos" aria-label="Ver planos do Programa Mulheres VIP Bellas">
-                Ver planos
-              </a>
-            </Button>
-          </div>
+          <a
+            href={buildWAUrl(whatsappMsg, { utm_source: "site", utm_medium: "vip", utm_content: "hero_cta" })}
+            className="mt-7 inline-flex w-full max-w-xl items-center justify-center rounded-lg px-6 py-4 text-base font-semibold shadow transition focus-visible:ring-2"
+            style={{ backgroundColor: CTA_GREEN, color: "#FFFFFF" }}
+            aria-label="Quero viver o meu dia de estrela"
+          >
+            Quero viver o meu dia de estrela
+          </a>
 
           <p className="mt-4 text-sm opacity-80" style={{ color: COLORS.text }}>
             Um único lugar para fazer tudo com carinho e sair se sentindo você por inteiro.

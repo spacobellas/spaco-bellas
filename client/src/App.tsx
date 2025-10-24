@@ -39,6 +39,8 @@ function Router() {
       {/* WhatsApp - Direto */}
       <Route path="/whatsapp" component={WhatsAppRedirect} />
 
+      <Route path="/whatsapp/:slug?"><WhatsAppRedirect /></Route>
+
       {/* 404 */}
       <Route component={NotFound} />
     </Switch>

@@ -26,7 +26,7 @@ export function Workshops() {
       id="workshops"
       aria-labelledby="wk-title"
       className="py-10 md:py-14"
-      style={{ backgroundColor: COLORS.lilacBg, color: COLORS.text }}
+      style={{ backgroundColor: "#fefbffff", color: COLORS.text }}
     >
       <div className="container mx-auto px-4">
         <div className="flex w-full items-center justify-center">

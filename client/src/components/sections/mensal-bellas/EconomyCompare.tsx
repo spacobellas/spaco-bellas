@@ -10,7 +10,7 @@ import {
   FaBath,             // Banheira
 } from "react-icons/fa6";
 
-const COLORS = { lilacBg: "#F6EDF9", gold: "#C7A45C", text: "#2F2F2F", primary: "#8E5BAE" };
+const COLORS = { lilacBg: "#fefbffff", gold: "#C7A45C", text: "#2F2F2F", primary: "#8E5BAE" };
 
 type Item = { label: string; avulso: number; plano: string; Icon: React.ComponentType<{ className?: string }> };
 
@@ -19,7 +19,7 @@ const SERVICES: Item[] = [
   { label: "Escova + hidratação (2×/mês)", avulso: 160, plano: "Incluído", Icon: FaWind },
   { label: "Skin Care + Sobrancelha", avulso: 100, plano: "Incluído", Icon: FaFaceSmileBeam },
   { label: "Massagem ou relaxamento", avulso: 180, plano: "Incluído", Icon: FaSpa },
-  { label: "Banheira aromática", avulso: 180, plano: "Incluída a partir do Plano 2", Icon: FaBath },
+  { label: "Banheira aromática", avulso: 180, plano: "Incluída no Plano 2+", Icon: FaBath },
 ];
 
 const PLANO_MIN = 347;

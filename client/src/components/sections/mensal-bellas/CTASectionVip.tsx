@@ -7,6 +7,8 @@ const COLORS = { lilacBg: "#F6EDF9", gold: "#C7A45C", text: "#2F2F2F", primary: 
 const WHATSAPP_NUMBER = "5511976820135";
 const buildWAUrl = (msg: string) => `${`https://wa.me/${WHATSAPP_NUMBER}`}?${new URLSearchParams({ text: msg }).toString()}`;
 
+const CTA_GREEN = "#16A34A"
+
 export function CTASectionVip({
   title = "Sua melhor versão começa com um momento só seu.",
   subtitle = "Deixe o Bellas cuidar de você — dos pés à alma. Escolha seu plano e viva a experiência completa todos os meses.",
@@ -65,7 +67,7 @@ export function CTASectionVip({
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex w-full max-w-xl items-center justify-center rounded-lg px-6 py-4 text-base font-semibold shadow transition focus-visible:ring-2"
-            style={{ backgroundColor: COLORS.primary, color: "#FFFFFF" }}
+            style={{ backgroundColor: CTA_GREEN, color: "#FFFFFF" }}
             aria-label="Quero viver o meu dia de estrela — entrar no Grupo VIP no WhatsApp"
           >
             Quero viver o meu dia de estrela

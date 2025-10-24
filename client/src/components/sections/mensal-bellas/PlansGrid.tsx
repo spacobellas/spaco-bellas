@@ -10,7 +10,7 @@ import imgCelebridade from "./assets/plansgrid/luxuryspa.jpeg";
 import imgRoyal from "./assets/plansgrid/royal.jpg";
 import imgInfinity from "./assets/plansgrid/infinity.jpg";
 
-const COLORS = { lilacBg: "#F6EDF9", gold: "#C7A45C", text: "#2F2F2F", primary: "#8E5BAE" };
+const COLORS = { lilacBg: "#F6EDF9", gold: "#C7A45C", text: "#2F2F2F", primary: "#8E5BAE", green: "#16A34A" };
 const WHATSAPP_NUMBER = "5511976820135";
 const buildWAUrl = (msg: string, utm?: Record<string, string>) => {
   const base = `https://wa.me/${WHATSAPP_NUMBER}`;
@@ -153,7 +153,7 @@ export function PlansGrid() {
       <Button
         asChild
         className="mt-6 w-full"
-        style={{ backgroundColor: COLORS.primary, color: "#FFFFFF" }}
+        style={{ backgroundColor: COLORS.green, color: "#FFFFFF" }}
       >
         <a
           href={buildWAUrl(`${MSG_MENSAL_VIP} | plano=${p.id}`, {

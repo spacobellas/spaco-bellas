@@ -138,7 +138,7 @@ export function TestimonialsVip() {
       ref={sectionRef}
       aria-labelledby="testimonials-title"
       className="py-10 lg:py-16"
-      style={{ backgroundColor: COLORS.lilacBg, color: COLORS.text }}
+      style={{ backgroundColor: "#fefbffff", color: COLORS.text }}
       tabIndex={0}
       onKeyDown={onKeyDown}
       onMouseEnter={() => setIsAutoPlaying(false)}

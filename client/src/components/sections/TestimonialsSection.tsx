@@ -152,7 +152,8 @@ export function TestimonialsSection() {
     <section
       id="testimonials"
       ref={sectionRef}
-      className="relative py-16 md:py-24 bg-gradient-to-b from-purple-50/30 to-white overflow-hidden"
+      className="relative py-16 md:py-24 bg-gradient-to-b overflow-hidden"
+      style={{backgroundColor: "#F6EDF9"}}
     >
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-purple-200 rounded-full filter blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2" />
