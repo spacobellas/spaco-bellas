@@ -19,7 +19,7 @@ const packages = [
   {
     id: "estrela",
     tier: "Dia de Estrela",
-    price: "297,00",
+    price: "447,00",
     duration: "1h30 de experiência",
     description: "Seu momento de cuidado e renovação essencial.",
     features: [
