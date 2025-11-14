@@ -9,7 +9,7 @@ const WHATSAPP_MESSAGE =
 
 // VSL principal (mesmo vídeo usado no SpaDaySection)
 const VSL_EMBED_URL =
-  "https://www.youtube.com/embed/LXb3EKWsInQ?si=akjU1MXZr8ODjoSE";
+  "https://www.youtube.com/embed/Fk4GrdnhFyA?si=DBixnEMgddCon8iY";
 
 export function HeroSpaDay() {
   const [isVisible, setIsVisible] = useState(false);
