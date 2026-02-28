@@ -1,19 +1,21 @@
-import { HeroSection } from "../components/sections/HeroSection";
-import { SpaDaySection } from "../components/sections/SpaDaySection";
-import { TestimonialsSection } from "../components/sections/TestimonialsSection";
-import { CTASection } from "../components/sections/CTASection";
-import { Footer } from "@/components/layout/Footer";
-import { FAQSpaDay } from "@/components/sections/FAQSpaDay";
 import { HeroSpaDay } from "@/components/sections/HeroSpaDay";
+import { SpaDaySection } from "@/components/sections/SpaDaySection";
+import { FAQSpaDay } from "@/components/sections/FAQSpaDay";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { packagesCelebridades } from "@/data/spa-packages";
 
 export default function SpaCelebridades() {
   return (
-    <div className="min-h-screen bg-white">
-      <HeroSpaDay />
-      <SpaDaySection />
+    <>
+      <HeroSpaDay
+        title="Seu dia de celebridade começa aqui"
+        subtitle="Do relaxamento essencial ao luxo completo — escolha a experiência perfeita para o seu momento"
+        whatsappText="Olá! Vim pelo site e quero conhecer os pacotes do Spa Day Celebridades!"
+        showVSL={true}
+      />
+      <SpaDaySection packages={packagesCelebridades} />
       <TestimonialsSection />
       <FAQSpaDay />
-      <Footer />
-    </div>
+    </>
   );
 }

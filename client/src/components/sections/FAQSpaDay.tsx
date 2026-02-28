@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { ChevronDown, Heart, Sparkles, Shield, Clock, Gift, MessageCircle } from "lucide-react";
+import {
+  ChevronDown,
+  Heart,
+  Sparkles,
+  Shield,
+  Clock,
+  Gift,
+  MessageCircle,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -10,28 +18,34 @@ type FAQItem = {
 
 const faqData: FAQItem[] = [
   {
-    question: "Como sei qual Dia escolher?",
+    question: "Como sei qual pacote escolher?",
     answer: (
       <div className="space-y-4">
         <p className="text-base text-gray-600 sm:text-lg">
-          Escolha com o coração, linda! Cada Dia foi pensado para um momento diferente da sua vida:
+          Escolha com o coração, linda! Cada pacote foi pensado para um momento diferente da sua vida:
         </p>
         <ul className="space-y-3 text-gray-600">
           <li className="flex items-start gap-3 text-base sm:text-lg">
             <Heart className="mt-1 h-5 w-5 text-purple-500" />
-            <span><strong>Estrela</strong> - Para aquele dia que você precisa de um cuidado essencial e renovador</span>
+            <span>
+              <strong>Relaxamento Básico ou Premium</strong> — Para aquele dia em que você precisa de um cuidado essencial e renovador, sozinha ou para presentear alguém especial.
+            </span>
           </li>
           <li className="flex items-start gap-3 text-base sm:text-lg">
             <Heart className="mt-1 h-5 w-5 text-purple-500" />
-            <span><strong>Diva</strong> - Quando você quer se sentir poderosa e radiante de cuidados</span>
+            <span>
+              <strong>Experiências a Dois</strong> — Quando o momento pede conexão: casal, mãe e filha ou amigas que merecem se cuidar juntas.
+            </span>
           </li>
           <li className="flex items-start gap-3 text-base sm:text-lg">
             <Heart className="mt-1 h-5 w-5 text-purple-500" />
-            <span><strong>Rainha</strong> - Para o dia em que você merece ser tratada como a rainha que é</span>
+            <span>
+              <strong>Celebridade ou Dia da Noiva</strong> — Para o dia em que você merece viver o mais alto nível de luxo, atenção e cuidado do início ao fim.
+            </span>
           </li>
         </ul>
         <p className="text-base font-medium text-purple-600 sm:text-lg">
-          Não se preocupe, nossa equipe te ajuda a escolher o perfeito no WhatsApp!
+          Não se preocupe — nossa equipe te ajuda a escolher o pacote perfeito no WhatsApp!
         </p>
       </div>
     ),
@@ -46,15 +60,21 @@ const faqData: FAQItem[] = [
         <ul className="space-y-3 text-gray-600">
           <li className="flex items-center gap-3 text-base sm:text-lg">
             <Clock className="h-5 w-5 text-pink-500" />
-            <span><strong>Dia de Estrela:</strong> 2 horas de puro cuidado</span>
+            <span>
+              <strong>Pacotes de Relaxamento (Básico e Premium):</strong> 2 horas de puro cuidado
+            </span>
           </li>
           <li className="flex items-center gap-3 text-base sm:text-lg">
             <Clock className="h-5 w-5 text-pink-500" />
-            <span><strong>Dia de Diva:</strong> 3 horas para brilhar</span>
+            <span>
+              <strong>Experiência a Dois (Casal 2h):</strong> 2 horas de conexão e relaxamento
+            </span>
           </li>
           <li className="flex items-center gap-3 text-base sm:text-lg">
             <Clock className="h-5 w-5 text-pink-500" />
-            <span><strong>Dia de Rainha:</strong> 4 horas de experiência completa</span>
+            <span>
+              <strong>Experiências Premium (Casal 3h30, Celebridade, Dia da Noiva):</strong> 3h30 de experiência completa
+            </span>
           </li>
         </ul>
         <p className="text-base text-gray-500 sm:text-lg">
@@ -86,7 +106,7 @@ const faqData: FAQItem[] = [
     answer: (
       <div className="space-y-4">
         <p className="text-base text-gray-600 sm:text-lg">
-          A vida da mulher moderna é cheia de surpresas, e nós entendemos perfeitamente! 
+          A vida da mulher moderna é cheia de surpresas, e nós entendemos perfeitamente!
         </p>
         <ul className="space-y-3 text-gray-600">
           <li className="flex items-center gap-3 text-base sm:text-lg">
@@ -113,7 +133,7 @@ const faqData: FAQItem[] = [
     answer: (
       <div className="space-y-4">
         <p className="text-base text-gray-600 sm:text-lg">
-          Apenas você, sua energia positiva e vontade de ser cuidada! 
+          Apenas você, sua energia positiva e vontade de ser cuidada!
         </p>
         <div className="rounded-2xl border border-pink-200 bg-pink-50 p-5">
           <p className="text-base text-pink-700 sm:text-lg">
@@ -158,7 +178,7 @@ const faqData: FAQItem[] = [
     ),
   },
   {
-    question: "Posso trazer minha filha ou amiga?",
+    question: "Posso trazer minha filha, amiga ou madrinha?",
     answer: (
       <div className="space-y-4">
         <p className="text-base text-gray-600 sm:text-lg">
@@ -170,7 +190,7 @@ const faqData: FAQItem[] = [
           </p>
         </div>
         <p className="text-base text-gray-600 sm:text-lg">
-          Converse com nossa equipe no WhatsApp para agendar juntas e receber o benefício.
+          Converse com nossa equipe no WhatsApp para agendar juntas e receber o benefício. Também temos pacotes especiais para grupos de noiva e madrinhas!
         </p>
       </div>
     ),
@@ -254,7 +274,13 @@ export function FAQSpaDay() {
           <Button
             variant="outline"
             className="mt-4 rounded-full bg-purple-600 px-6 py-3 text-base text-white hover:bg-purple-700 sm:mt-6 sm:px-8"
-            onClick={() => window.open("https://wa.me/5511976820135?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Spa%20Day", "_blank")}
+            onClick={() =>
+              window.open(
+                "https://wa.me/5511976820135?text=" +
+                  encodeURIComponent("Olá! Tenho uma dúvida sobre o Spa Day"),
+                "_blank"
+              )
+            }
           >
             <MessageCircle className="mr-2 h-5 w-5" />
             Falar no WhatsApp

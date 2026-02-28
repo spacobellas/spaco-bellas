@@ -1,296 +1,403 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Check, Sparkles, Crown, Star, Heart } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import {
+  Check,
+  Sparkles,
+  ArrowRight,
+  MessageCircle,
+  ChevronLeft,
+  ChevronRight,
+  Plus,
+} from "lucide-react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { useLocation } from "wouter";
+import type { SpaPackage } from "@/data/spa-packages";
 
 const WHATSAPP_NUMBER = "5511976820135";
 
-const WHATSAPP_LINKS: Record<string, string> = {
-  estrela:
-    "https://wa.me/5511976820135?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Dia%20de%20Estrela!",
-  diva:
-    "https://wa.me/5511976820135?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Dia%20de%20Diva!",
-  rainha:
-    "https://wa.me/5511976820135?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Dia%20de%20Rainha!",
-};
+interface SpaDaySectionProps {
+  packages: SpaPackage[];
+}
 
-// Pacotes do Spa Day das Celebridades
-const packages = [
-  {
-    id: "estrela",
-    tier: "Dia de Estrela",
-    installment: "12x de R$ 39,70",
-    cash: "R$ 397 à vista no Pix",
-    duration: "2h de experiência",
-    description: "Seu momento de cuidado e renovação essencial.",
-    features: [
-      "Spa dos pés (30 min)",
-      "Quick massage (20 min)",
-      "Banheira relaxante com aromaterapia (30 min)",
-      "Chá especial e frutas",
-      "Roupão personalizado",
-      "Ambiente aromático e música",
-      "Registro básico (foto ou story)",
-    ],
-    featured: false,
-    color: "from-pink-400 to-pink-600",
-    icon: Star,
-    badge: null as string | null,
-    badgeColor: "bg-pink-500",
-  },
-  {
-    id: "rainha",
-    tier: "Dia de Rainha",
-    installment: "12x de R$ 69,70",
-    cash: "R$ 697 à vista no Pix",
-    duration: "3h de experiência",
-    description: "A experiência completa para você se sentir uma verdadeira rainha.",
-    features: [
-      "Spa dos pés",
-      "Banheira relaxante com aromaterapia",
-      "Massagem terapêutica com pedras quentes (50 min)",
-      "Acesso ao Camarim das Celebridades",
-      "Roupão personalizado",
-      "Ambiente aromático e música",
-      "Chá especial, sucos ou refrigerante",
-      "Tábua de frios, frutas e castanhas",
-      "Lembrança personalizada para levar pra casa",
-      "Banho com produtos veganos",
-      "Escova profissional pós banho",
-      "Registro básico: foto + story do seu dia",
-      "Foto personalizada do seu dia",
-    ],
-    featured: true,
-    color: "from-purple-400 to-purple-600",
-    icon: Crown,
-    badge: "Mais vendido!",
-    badgeColor: "bg-[var(--primary-purple)]",
-  },
-  {
-    id: "diva",
-    tier: "Dia de Diva",
-    installment: "12x de R$ 149,69",
-    cash: "R$ 1.497,00 à vista no Pix",
-    duration: "3h30 de experiência",
-    description: "O luxo completo. Viva seu dia de celebridade.",
-    features: [
-      "Tudo do Dia de Rainha",
-      "Figurino especial incluído",
-      "Buquê de flores + chocolates",
-      "Mini ensaio fotográfico profissional",
-      "Maquiagem social",
-      "Making off em vídeo (estilo dia da noiva)",
-      "Certificado 'Eu fui Celebridade Bellas 💜'",
-      "Garrafa de Champanhe ou Vinho",
-      "Tábua Luxo: castanhas, frios, frutas e salgadinho",
-      "Sua foto no mural das celebridades!",
-    ],
-    featured: false,
-    color: "from-amber-400 to-amber-600",
-    icon: Crown,
-    badge: null as string | null,
-    badgeColor: "bg-amber-500",
-  },
-];
-
-export function SpaDaySection() {
+export function SpaDaySection({ packages }: SpaDaySectionProps) {
   const [isVisible, setIsVisible] = useState(false);
-  const [hoveredPackage, setHoveredPackage] = useState<string | null>(null);
-  const sectionRef = useRef<HTMLElement | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [scrollStartX, setScrollStartX] = useState(0);
+  const [isScrollable, setIsScrollable] = useState(false);
 
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [, navigate] = useLocation();
+
+  // ── Fade-in ao entrar na viewport ─────────────────────────────────────────
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.1 }
+      { threshold: 0.05 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  const handleWhatsAppClick = (id: string) => {
-    const url = WHATSAPP_LINKS[id];
-    if (url) window.open(url, "_blank", "noopener,noreferrer");
+  // ── Verifica se o carrossel realmente precisa rolar ──────────────────────
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const checkScrollable = () => {
+      setIsScrollable(track.scrollWidth > track.clientWidth);
+    };
+
+    checkScrollable();
+    const observer = new ResizeObserver(checkScrollable);
+    observer.observe(track);
+
+    return () => observer.disconnect();
+  }, [packages.length]);
+
+  // ── Sincroniza o dot ativo com o scroll real ───────────────────────────────
+  const syncIndex = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const first = track.firstElementChild as HTMLElement | null;
+    if (!first) return;
+    const cardWidth = first.clientWidth;
+    const gap = 24; // gap-6 = 1.5rem = 24px
+    setActiveIndex(Math.round(track.scrollLeft / (cardWidth + gap)));
+  }, []);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.addEventListener("scroll", syncIndex, { passive: true });
+    return () => track.removeEventListener("scroll", syncIndex);
+  }, [syncIndex]);
+
+  // ── Scroll programático para um índice ────────────────────────────────────
+  const scrollTo = useCallback(
+    (index: number) => {
+      const track = trackRef.current;
+      if (!track) return;
+      const clamped = Math.max(0, Math.min(index, packages.length - 1));
+      const first = track.firstElementChild as HTMLElement | null;
+      if (!first) return;
+      const cardWidth = first.clientWidth;
+      const gap = 24;
+      track.scrollTo({ left: clamped * (cardWidth + gap), behavior: "smooth" });
+      setActiveIndex(clamped);
+    },
+    [packages.length]
+  );
+
+  const prev = () => scrollTo(activeIndex - 1);
+  const next = () => scrollTo(activeIndex + 1);
+
+  // ── Drag-to-scroll no desktop ─────────────────────────────────────────────
+  const onMouseDown = (e: React.MouseEvent) => {
+    if (!trackRef.current) return;
+    if (trackRef.current.scrollWidth <= trackRef.current.clientWidth) return;
+
+    setIsDragging(true);
+    setDragStartX(e.clientX);
+    setScrollStartX(trackRef.current.scrollLeft);
   };
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !trackRef.current) return;
+    e.preventDefault();
+    trackRef.current.scrollLeft = scrollStartX - (e.clientX - dragStartX);
+  };
+  const onMouseUp = () => setIsDragging(false);
+
+  // ── Ação do CTA ───────────────────────────────────────────────────────────
+  const handleCtaClick = (pkg: SpaPackage) => {
+    if (pkg.pageUrl) {
+      navigate(pkg.pageUrl);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const encoded = encodeURIComponent(pkg.whatsappText);
+      window.open(
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`,
+        "_blank",
+        "noopener,noreferrer"
+      );
+    }
+  };
+
+  // ── Lógica para centralizar e esconder controles se os itens couberem ─────
+  let carouselControlsClass = "flex";
+  let trackJustifyClass = "";
+
+  if (packages.length === 1) {
+    carouselControlsClass = "hidden";
+    trackJustifyClass = "justify-center";
+  } else if (packages.length === 2) {
+    carouselControlsClass = "flex lg:hidden";
+    trackJustifyClass = "lg:justify-center";
+  } else if (packages.length === 3) {
+    carouselControlsClass = "flex xl:hidden";
+    trackJustifyClass = "xl:justify-center";
+  }
 
   return (
     <section
       id="spa-day"
       ref={sectionRef}
-      className="relative py-16 md:py-24 bg-gradient-to-b overflow-hidden"
+      className="relative overflow-hidden py-16 md:py-24"
       style={{ backgroundColor: "#faebff" }}
     >
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-purple-200 rounded-full filter blur-3xl opacity-20 -translate-x-12 -translate-y-12" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-200 rounded-full filter blur-3xl opacity-20 translate-x-12 translate-y-12" />
+      {/* Blobs decorativos */}
+      <div className="pointer-events-none absolute inset-0 -z-0">
+        <div className="absolute -left-32 -top-32 h-80 w-80 rounded-full bg-purple-300/25 blur-3xl" />
+        <div className="absolute -right-32 -bottom-32 h-80 w-80 rounded-full bg-pink-300/25 blur-3xl" />
+        <div className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-fuchsia-200/15 blur-3xl" />
+      </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
-        {/* Cabeçalho da seção */}
-        <div className="text-center mb-14 sm:mb-16 lg:mb-20">
-          <div className="inline-flex items-center gap-2 rounded-full bg-purple-500/10 px-4 py-1 text-sm font-medium uppercase tracking-[0.2em] text-purple-600 sm:text-base">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Cabeçalho */}
+        <div className="mb-10 text-center sm:mb-14">
+          <div className="inline-flex items-center gap-2 rounded-full bg-purple-500/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-purple-700">
             <Sparkles className="h-4 w-4" />
             Pacotes especiais
           </div>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+          <h2 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
             Escolha o seu dia perfeito
           </h2>
-          <p className="mx-auto mt-2 max-w-2xl text-base text-gray-600 sm:text-lg">
-            Cada experiência foi cuidadosamente pensada para transformar seu momento em algo inesquecível
+          <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg">
+            Cada experiência foi pensada para transformar seu momento em algo inesquecível
           </p>
         </div>
 
-        {/* Packages grid */}
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8 mt-4 mb-20 md:mb-24">
-          {packages.map((pkg, index) => {
-            const IconComponent = pkg.icon;
+        {/* Carrossel */}
+        <div className="relative">
+          {/* Botão ← */}
+          <button
+            onClick={prev}
+            disabled={activeIndex === 0}
+            aria-label="Pacote anterior"
+            className={`
+              ${carouselControlsClass}
+              absolute -left-3 top-1/2 z-20 -translate-y-1/2
+              h-11 w-11 items-center justify-center
+              rounded-full border border-purple-200 bg-white text-purple-600 shadow-lg
+              transition-all duration-200
+              hover:bg-purple-600 hover:text-white hover:shadow-xl hover:shadow-purple-300/40
+              disabled:pointer-events-none disabled:opacity-25
+              sm:-left-5 lg:-left-8
+            `}
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
 
-            return (
-              <Card
-                key={pkg.id}
-                onMouseEnter={() => setHoveredPackage(pkg.id)}
-                onMouseLeave={() => setHoveredPackage(null)}
-                className={`group relative overflow-hidden transition-all duration-500 cursor-pointer h-full ${
-                  pkg.featured
-                    ? "border-2 border-[var(--primary-purple)] shadow-2xl md:scale-105 lg:scale-110"
-                    : "border border-[var(--primary-purple)]/20 shadow-lg hover:shadow-2xl hover:scale-105 hover:border-[var(--primary-purple)]"
-                } ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <CardContent className="p-6 sm:p-8 relative z-10 flex flex-col h-full">
-                  {/* Badge */}
-                  {pkg.badge && (
-                    <div className="absolute top-4 right-4">
-                      <div
-                        className={`${pkg.badgeColor} px-3 sm:px-4 py-1 rounded-full text-xs font-bold text-white shadow-lg`}
-                      >
-                        {pkg.badge}
+          {/* Botão → */}
+          <button
+            onClick={next}
+            disabled={activeIndex === packages.length - 1}
+            aria-label="Próximo pacote"
+            className={`
+              ${carouselControlsClass}
+              absolute -right-3 top-1/2 z-20 -translate-y-1/2
+              h-11 w-11 items-center justify-center
+              rounded-full border border-purple-200 bg-white text-purple-600 shadow-lg
+              transition-all duration-200
+              hover:bg-purple-600 hover:text-white hover:shadow-xl hover:shadow-purple-300/40
+              disabled:pointer-events-none disabled:opacity-25
+              sm:-right-5 lg:-right-8
+            `}
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+
+          {/* Track */}
+          <div
+            ref={trackRef}
+            onMouseDown={onMouseDown}
+            onMouseMove={onMouseMove}
+            onMouseUp={onMouseUp}
+            onMouseLeave={onMouseUp}
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            className={`
+              flex gap-6 overflow-x-auto scroll-smooth
+              snap-x snap-mandatory items-stretch
+              px-1 pb-6 pt-4 ${trackJustifyClass}
+              ${
+                isScrollable
+                  ? isDragging
+                    ? "cursor-grabbing select-none"
+                    : "cursor-grab"
+                  : ""
+              }
+            `}
+          >
+            {packages.map((pkg, index) => {
+              const IconComponent = pkg.icon;
+              const isNav = !!pkg.pageUrl;
+              const isActive = index === activeIndex;
+
+              return (
+                <div
+                  key={pkg.id}
+                  className={`
+                    snap-center shrink-0 flex
+                    w-[82vw] sm:w-[340px] md:w-[360px] lg:w-[380px]
+                    transition-all duration-500
+                    ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
+                  `}
+                  style={{ transitionDelay: `${index * 60}ms` }}
+                >
+                  <Card
+                    className={`
+                      group relative flex w-full flex-col overflow-hidden rounded-3xl border-0 bg-white
+                      transition-all duration-300
+                      ${
+                        isActive
+                          ? "shadow-2xl shadow-purple-200/60 scale-[1.02]"
+                          : "shadow-md hover:shadow-xl hover:scale-[1.01]"
+                      }
+                      ${
+                        pkg.featured
+                          ? "ring-2 ring-purple-500 ring-offset-2 ring-offset-[#faebff]"
+                          : ""
+                      }
+                    `}
+                  >
+                    {/* Faixa de cor no topo */}
+                    <div className={`h-2 w-full shrink-0 bg-gradient-to-r ${pkg.color}`} />
+
+                    <CardContent className="flex flex-col flex-1 gap-5 p-6 sm:p-8">
+                      {/* Ícone + Badge */}
+                      <div className="flex items-start justify-between gap-3">
+                        <div
+                          className={`
+                            flex h-12 w-12 shrink-0 items-center justify-center
+                            rounded-2xl bg-gradient-to-br ${pkg.color} shadow-lg
+                            transition-transform duration-300 group-hover:scale-110
+                          `}
+                        >
+                          <IconComponent className="h-6 w-6 text-white" />
+                        </div>
+                        {pkg.badge && (
+                          <span
+                            className={`${pkg.badgeColor} shrink-0 rounded-full px-3 py-1 text-xs font-bold text-white shadow-sm`}
+                          >
+                            {pkg.badge}
+                          </span>
+                        )}
                       </div>
-                    </div>
-                  )}
 
-                  {/* Gradient background hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none" />
+                      {/* Nome + duração + descrição */}
+                      <div className="space-y-1">
+                        <h3 className="text-lg font-bold leading-snug text-gray-900 sm:text-xl">
+                          {pkg.tier}
+                        </h3>
+                        <p className="text-sm font-semibold text-purple-600">
+                          {pkg.duration}
+                        </p>
+                        <p className="text-sm leading-relaxed text-gray-500">
+                          {pkg.description}
+                        </p>
+                      </div>
 
-                  {/* Icon */}
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                    <div className={`w-full h-full rounded-full bg-gradient-to-br ${pkg.color} flex items-center justify-center`}>
-                      <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
-                    </div>
-                  </div>
-
-                  {/* Tier name */}
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
-                    {pkg.tier}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[var(--primary-purple)] font-medium mb-4">
-                    {pkg.duration}
-                  </p>
-                  <p className="text-sm sm:text-base text-gray-600 mb-6 min-h-[3rem]">
-                    {pkg.description}
-                  </p>
-
-                  {/* Price */}
-                  <div className="mb-6 pb-6 border-b border-gray-200">
-
-                    {/* Parcelado bem grande */}
-                    <div className="flex flex-col items-start gap-1">
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+                      {/* Preço */}
+                      <div className="rounded-2xl bg-gray-50 px-4 py-4">
+                        <p className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
                           {pkg.installment}
-                        </span>
+                        </p>
+                        <p className="mt-0.5 text-xs text-gray-400">
+                          ou{" "}
+                          <span className="font-medium text-gray-500">{pkg.cash}</span>
+                        </p>
                       </div>
 
-                      {/* À vista bem pequeno */}
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-xs sm:text-sm text-gray-500">
-                          ou
-                        </span>
-                        <span className="text-[0.7rem] sm:text-xs text-gray-600">
-                          {pkg.cash}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                      {/* Features */}
+                      <ul className="space-y-2.5 mb-6">
+                        {pkg.features.map((feature, idx) => {
+                          // Truque visual: se a feature começar com "Tudo do", usamos um ícone de "Mais" em vez do "Check" para dar destaque.
+                          const isIncludes = feature.toLowerCase().startsWith("tudo do");
+                          
+                          return (
+                            <li key={idx} className="flex items-start gap-2.5">
+                              {isIncludes ? (
+                                <Plus className="mt-0.5 h-4 w-4 shrink-0 text-purple-600 font-bold" />
+                              ) : (
+                                <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                              )}
+                              <span className={`text-sm leading-relaxed ${isIncludes ? "font-semibold text-purple-700" : "text-gray-700"}`}>
+                                {feature}
+                              </span>
+                            </li>
+                          );
+                        })}
+                      </ul>
 
-                  {/* Features */}
-                  <ul className="space-y-3 mb-6">
-                    {pkg.features.map((feature, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start gap-3"
+                      {/* CTA empurrado para o final pelo mt-auto */}
+                      <Button
+                        size="lg"
+                        className={`
+                          mt-auto w-full rounded-2xl font-semibold shadow-md transition-all duration-300
+                          ${
+                            isNav
+                              ? "bg-purple-600 text-white hover:bg-purple-700"
+                              : "bg-emerald-500 text-white hover:bg-emerald-600"
+                          }
+                        `}
+                        onClick={() => handleCtaClick(pkg)}
                       >
-                        <Check
-                          className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5 ${
-                            pkg.featured
-                              ? "text-[var(--primary-purple)]"
-                              : "text-pink-500"
-                          }`}
-                        />
-                        <span className="text-xs sm:text-sm text-gray-700 leading-relaxed">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA Button fixado na base */}
-                  <div className="mt-auto pt-2">
-                    <Button
-                      asChild
-                      className="w-full font-medium shadow-lg transition-all duration-300 cursor-pointer pointer-events-auto relative z-50 bg-emerald-500 hover:bg-emerald-600 text-white border-2 border-emerald-500 hover:border-emerald-600"
-                      size="lg"
-                      onClick={() => handleWhatsAppClick(pkg.id)}
-                    >
-                      <div className="flex items-center justify-center">
-                        {pkg.id === "rainha" ? (
+                        {isNav ? (
                           <>
-                            <Heart className="w-4 h-4 mr-2" />
-                            <span>Quero meu dia de rainha</span>
-                          </>
-                        ) : pkg.id === "diva" ? (
-                          <>
-                            <Crown className="w-4 h-4 mr-2" />
-                            <span>Quero meu dia de diva</span>
+                            {pkg.ctaLabel}
+                            <ArrowRight className="ml-2 h-4 w-4" />
                           </>
                         ) : (
                           <>
-                            <Star className="w-4 h-4 mr-2" />
-                            <span>Quero meu dia de estrela</span>
+                            <MessageCircle className="mr-2 h-4 w-4" />
+                            {pkg.ctaLabel}
                           </>
                         )}
-                      </div>
-                    </Button>
-                  </div>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </div>
+              );
+            })}
+          </div>
 
-                  {/* Animated border on hover */}
-                  <div className="pointer-events-none absolute inset-0 border-2 border-transparent group-hover:border-[var(--primary-purple)]/30 rounded-lg transition-colors duration-300" />
-                </CardContent>
-              </Card>
-            );
-          })}
+          {/* Dots */}
+          {packages.length > 1 && (
+            <div
+              className={`mt-3 items-center justify-center gap-2 ${carouselControlsClass}`}
+            >
+              {packages.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => scrollTo(i)}
+                  aria-label={`Ir para o pacote ${i + 1}`}
+                  className={`
+                    rounded-full transition-all duration-300
+                    ${
+                      i === activeIndex
+                        ? "h-2.5 w-8 bg-purple-600"
+                        : "h-2.5 w-2.5 bg-purple-200 hover:bg-purple-400"
+                    }
+                  `}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* Additional info + disclaimer do roupão */}
-        <div className="text-center text-gray-600 text-xl sm:text-lg px-4 mt-8">
-          <p className="flex items-center justify-center gap-2 flex-wrap mb-2">
-            <Sparkles className="w-4 h-4 text-[var(--primary-purple)]" />
-            <span>
-              Todos os pacotes incluem roupão personalizado e ambiente exclusivo.
-            </span>
+        {/* Rodapé */}
+        <div className="mx-auto mt-12 max-w-2xl text-center text-gray-500">
+          <p className="flex flex-wrap items-center justify-center gap-1.5 text-sm sm:text-base">
+            <Sparkles className="h-4 w-4 text-purple-500" />
+            Todos os pacotes incluem roupão personalizado e ambiente exclusivo.
           </p>
-          <p className="text-[0.7rem] sm:text-base text-gray-500 mb-1">
-            Roupão personalizado disponível para uso durante a experiência (não
-            incluso para levar embora).
-          </p>
-          <p className="text-[0.75rem] sm:text-base text-gray-500 mt-1">
-            Agendamento via WhatsApp • Experiência inesquecível garantida 💜
+          <p className="mt-1 text-xs text-gray-400 sm:text-sm">
+            Roupão disponível para uso durante a experiência (não incluso para levar).
+            Agendamento via WhatsApp 💜
           </p>
         </div>
       </div>

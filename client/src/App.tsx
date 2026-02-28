@@ -9,6 +9,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import LinktreeIndex from "@/pages/LinktreeIndex";
 import Home from "@/pages/Home";
 import SpaCelebridades from "@/pages/SpaCelebridades";
+import SpaIndividual from "@/pages/SpaIndividual";
+import SpaCasal from "@/pages/SpaCasal";
+import SpaNoiva from "@/pages/SpaNoiva";
 import WhatsAppRedirect from "@/pages/WhatsAppRedirect";
 import EmpresasPage from "@/pages/empresas";
 import NotFound from "@/pages/not-found";
@@ -26,8 +29,11 @@ function Router() {
       {/* Página institucional completa */}
       <Route path="/institucional" component={Home} />
 
-      {/* Landing page do Spa das Celebridades */}
+      {/* Landing pages do Spa Day */}
       <Route path="/spa-celebridades" component={SpaCelebridades} />
+      <Route path="/spa-individual" component={SpaIndividual} />
+      <Route path="/spa-casal" component={SpaCasal} />
+      <Route path="/spa-diadanoiva" component={SpaNoiva} />
 
       {/* NOVA: Programa Mulheres VIP Bellas */}
       <Route path="/mensal-bellas" component={MensalBellasPage} />
