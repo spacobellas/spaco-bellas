@@ -21,7 +21,7 @@ const navItems = [
  * Membership (Mensal Bellas VIP) Landing Page.
  * Composes the components from the membership feature.
  */
-export default function MembershipPage() {
+export default function MensalBellas() {
   return (
     <>
       <Header navItems={navItems} />

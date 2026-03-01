@@ -23,7 +23,7 @@ const navItems = [
  * Corporate Landing Page.
  * Composes the components from the corporate feature.
  */
-export default function CorporatePage() {
+export default function Empresas() {
   return (
     <>
       <Header navItems={navItems} />

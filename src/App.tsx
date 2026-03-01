@@ -6,25 +6,24 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 // Páginas
-import LinktreeIndex from "@/pages/LinktreeIndex";
+import Linktree from "@/pages/Linktree";
 import Home from "@/pages/Home";
 import SpaCelebridades from "@/pages/SpaCelebridades";
 import SpaIndividual from "@/pages/SpaIndividual";
 import SpaCasal from "@/pages/SpaCasal";
 import SpaNoiva from "@/pages/SpaNoiva";
 import WhatsAppRedirect from "@/pages/WhatsAppRedirect";
-import EmpresasPage from "@/pages/empresas";
-import NotFound from "@/pages/not-found";
+import Empresas from "@/pages/Empresas";
+import NaoEncontrado from "@/pages/NaoEncontrado";
 
 // Nova página: Mulheres VIP Bellas
-// Certifique-se de ter criado src/pages/mensal-bellas.tsx conforme definido anteriormente.
-import MensalBellasPage from "@/pages/mensal-bellas";
+import MensalBellas from "@/pages/MensalBellas";
 
 function Router() {
   return (
     <Switch>
       {/* Página principal - Linktree style */}
-      <Route path="/" component={LinktreeIndex} />
+      <Route path="/" component={Linktree} />
 
       {/* Página institucional completa */}
       <Route path="/institucional" component={Home} />
@@ -36,11 +35,11 @@ function Router() {
       <Route path="/spa-diadanoiva" component={SpaNoiva} />
 
       {/* NOVA: Programa Mulheres VIP Bellas */}
-      <Route path="/mensal-bellas" component={MensalBellasPage} />
+      <Route path="/mensal-bellas" component={MensalBellas} />
       {/* Alias opcional para campanhas/SEO */}
-      <Route path="/mulheres-vip-bellas" component={MensalBellasPage} />
+      <Route path="/mulheres-vip-bellas" component={MensalBellas} />
 
-      <Route path="/empresas" component={EmpresasPage} />
+      <Route path="/empresas" component={Empresas} />
 
       {/* WhatsApp - Direto */}
       <Route path="/whatsapp" component={WhatsAppRedirect} />
@@ -48,7 +47,7 @@ function Router() {
       <Route path="/whatsapp/:slug?"><WhatsAppRedirect /></Route>
 
       {/* 404 */}
-      <Route component={NotFound} />
+      <Route component={NaoEncontrado} />
     </Switch>
   );
 }

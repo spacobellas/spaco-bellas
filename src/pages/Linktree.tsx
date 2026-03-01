@@ -86,7 +86,7 @@ const links: LinkItem[] = [
  * Linktree-style landing page.
  * Acts as the main entry point for mobile social media users.
  */
-export default function LinktreeIndex() {
+export default function Linktree() {
   const whatsappGeneralUrl = buildWhatsAppUrl(WHATSAPP_MESSAGES.GENERAL);
 
   return (
