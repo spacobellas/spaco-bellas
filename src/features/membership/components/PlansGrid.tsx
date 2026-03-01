@@ -10,12 +10,12 @@ import imgCelebridade from "@/assets/images/membership/plansgrid/luxuryspa.jpeg"
 import imgRoyal from "@/assets/images/membership/plansgrid/royal.jpg";
 import imgInfinity from "@/assets/images/membership/plansgrid/infinity.jpg";
 
-const COLORS = { 
-  lilacBg: "#F6EDF9", 
-  gold: "#C7A45C", 
-  text: "#2F2F2F", 
-  primary: "#8E5BAE", 
-  green: "#16A34A" 
+const COLORS = {
+  lilacBg: "#F6EDF9",
+  gold: "#C7A45C",
+  text: "#2F2F2F",
+  primary: "#8E5BAE",
+  green: "#16A34A",
 };
 
 type PlanId = "essencial" | "relax" | "celebridade" | "royal" | "infinity";
@@ -103,10 +103,10 @@ const PLANS: Plan[] = [
 ];
 
 const formatCurrency = (value: number) =>
-  value.toLocaleString("pt-BR", { 
-    style: "currency", 
-    currency: "BRL", 
-    maximumFractionDigits: 0 
+  value.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    maximumFractionDigits: 0,
   });
 
 /**
@@ -115,7 +115,7 @@ const formatCurrency = (value: number) =>
  */
 export function PlansGrid() {
   const [isVisible, setIsVisible] = useState(false);
-  
+
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -124,26 +124,31 @@ export function PlansGrid() {
   const secondRow = PLANS.slice(3, 5);
 
   const PlanCard = (plan: Plan) => {
-    const whatsappUrl = buildWhatsAppUrl(`${WHATSAPP_MESSAGES.MENSAL_VIP} | plano=${plan.id}`, {
-      utm_source: "site",
-      utm_medium: "mensal-bellas",
-      utm_content: `plan_${plan.id}`,
-    });
+    const whatsappUrl = buildWhatsAppUrl(
+      `${WHATSAPP_MESSAGES.MENSAL_VIP} | plano=${plan.id}`,
+      {
+        utm_source: "site",
+        utm_medium: "mensal-bellas",
+        utm_content: `plan_${plan.id}`,
+      },
+    );
 
     return (
       <article
         key={plan.id}
         className={[
           "flex flex-col rounded-2xl bg-white p-6 shadow border transition",
-          plan.highlight ? "ring-2 ring-[#8E5BAE]" : "border-transparent hover:shadow-md",
+          plan.highlight
+            ? "ring-2 ring-[#8E5BAE]"
+            : "border-transparent hover:shadow-md",
         ].join(" ")}
         aria-label={`Plano ${plan.name}`}
       >
-        <img 
-          src={PLAN_IMAGES[plan.id]} 
-          alt="" 
-          className="mb-4 h-32 w-full rounded-xl object-cover" 
-          loading="lazy" 
+        <img
+          src={PLAN_IMAGES[plan.id]}
+          alt=""
+          className="mb-4 h-32 w-full rounded-xl object-cover"
+          loading="lazy"
         />
         <header className="mb-4">
           <div className="flex items-center justify-between gap-2">
@@ -164,7 +169,11 @@ export function PlansGrid() {
         <ul className="space-y-2 flex-grow">
           {plan.bullets.map((bullet, index) => (
             <li key={index} className="flex items-start gap-2">
-              <Check className="mt-1 text-[#8E5BAE] flex-shrink-0" size={18} aria-hidden />
+              <Check
+                className="mt-1 text-[#8E5BAE] flex-shrink-0"
+                size={18}
+                aria-hidden
+              />
               <span className="text-sm">{bullet}</span>
             </li>
           ))}
@@ -201,10 +210,10 @@ export function PlansGrid() {
         <div className="flex w-full items-center justify-center">
           <span
             className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs"
-            style={{ 
-              backgroundColor: "#FAF8FB", 
-              color: COLORS.primary, 
-              border: `1px solid ${COLORS.primary}20` 
+            style={{
+              backgroundColor: "#FAF8FB",
+              color: COLORS.primary,
+              border: `1px solid ${COLORS.primary}20`,
             }}
           >
             <Sparkles size={14} />
@@ -226,7 +235,8 @@ export function PlansGrid() {
             Planos mensais que cuidam de você por inteiro
           </h2>
           <p className="mt-2 opacity-90">
-            Todos incluem beleza, relaxamento, cuidados faciais e design — com economia real e experiência completa.
+            Todos incluem beleza, relaxamento, cuidados faciais e design — com
+            economia real e experiência completa.
           </p>
         </header>
 
@@ -241,7 +251,8 @@ export function PlansGrid() {
 
         <div className="mt-6 text-xs opacity-80 text-center max-w-3xl mx-auto">
           <p>
-            Banheira aromática incluída a partir do Plano 2; sábados com taxa premium, seg–qui com bônus para melhor experiência e fluxo.
+            Banheira aromática incluída a partir do Plano 2; sábados com taxa
+            premium, seg–qui com bônus para melhor experiência e fluxo.
           </p>
         </div>
       </div>

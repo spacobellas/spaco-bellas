@@ -5,7 +5,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-// Páginas
+// Pages
 import Linktree from "@/pages/Linktree";
 import Home from "@/pages/Home";
 import SpaCelebridades from "@/pages/SpaCelebridades";
@@ -16,35 +16,37 @@ import WhatsAppRedirect from "@/pages/WhatsAppRedirect";
 import Empresas from "@/pages/Empresas";
 import NaoEncontrado from "@/pages/NaoEncontrado";
 
-// Nova página: Mulheres VIP Bellas
+// New page: Mulheres VIP Bellas
 import MensalBellas from "@/pages/MensalBellas";
 
 function Router() {
   return (
     <Switch>
-      {/* Página principal - Linktree style */}
+      {/* Main page - Linktree style */}
       <Route path="/" component={Linktree} />
 
-      {/* Página institucional completa */}
+      {/* Institutional landing page */}
       <Route path="/institucional" component={Home} />
 
-      {/* Landing pages do Spa Day */}
+      {/* Spa Day landing pages */}
       <Route path="/spa-celebridades" component={SpaCelebridades} />
       <Route path="/spa-individual" component={SpaIndividual} />
       <Route path="/spa-casal" component={SpaCasal} />
       <Route path="/spa-diadanoiva" component={SpaNoiva} />
 
-      {/* NOVA: Programa Mulheres VIP Bellas */}
+      {/* NEW: Mulheres VIP Bellas Program */}
       <Route path="/mensal-bellas" component={MensalBellas} />
-      {/* Alias opcional para campanhas/SEO */}
+      {/* Optional alias for marketing/SEO */}
       <Route path="/mulheres-vip-bellas" component={MensalBellas} />
 
       <Route path="/empresas" component={Empresas} />
 
-      {/* WhatsApp - Direto */}
+      {/* WhatsApp - Direct */}
       <Route path="/whatsapp" component={WhatsAppRedirect} />
 
-      <Route path="/whatsapp/:slug?"><WhatsAppRedirect /></Route>
+      <Route path="/whatsapp/:slug?">
+        <WhatsAppRedirect />
+      </Route>
 
       {/* 404 */}
       <Route component={NaoEncontrado} />

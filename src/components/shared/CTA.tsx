@@ -47,7 +47,8 @@ const DEFAULT_BENEFITS: CTABenefit[] = [
 
 const COLOR_MAP = {
   pink: "from-pink-400 to-pink-600 border-pink-100 hover:border-pink-300",
-  purple: "from-purple-400 to-purple-600 border-purple-100 hover:border-purple-300",
+  purple:
+    "from-purple-400 to-purple-600 border-purple-100 hover:border-purple-300",
   amber: "from-amber-400 to-amber-600 border-amber-100 hover:border-amber-300",
 };
 
@@ -59,8 +60,11 @@ export function CTA({
   id = "cta",
   title = (
     <>
-      Viva seu Dia de Estrela<br />
-      <span className="text-[var(--primary-purple)]">no Spa das Celebridades</span>
+      Viva seu Dia de Estrela
+      <br />
+      <span className="text-[var(--primary-purple)]">
+        no Spa das Celebridades
+      </span>
     </>
   ),
   subtitle = "As 10 primeiras clientes do pré-lançamento ganham benefícios exclusivos!",
@@ -92,7 +96,9 @@ export function CTA({
         {showUrgencyBadge && (
           <div
             className={`flex justify-center mb-8 transition-all duration-1000 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 -translate-y-10"
             }`}
           >
             <div className="inline-flex items-center gap-2 bg-amber-50 border-2 border-amber-200 rounded-full px-4 sm:px-6 py-2 sm:py-3 shadow-lg">
@@ -128,14 +134,16 @@ export function CTA({
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
-              <Card 
+              <Card
                 key={index}
                 className={`group p-6 sm:p-8 bg-white border-2 ${COLOR_MAP[benefit.color]} hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer ${
                   index === 2 ? "sm:col-span-2 lg:col-span-1" : ""
                 }`}
               >
                 <div className="flex flex-col items-center text-center space-y-3 sm:space-y-4">
-                  <div className={`w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br ${COLOR_MAP[benefit.color].split(' ')[0]} ${COLOR_MAP[benefit.color].split(' ')[1]} rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  <div
+                    className={`w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br ${COLOR_MAP[benefit.color].split(" ")[0]} ${COLOR_MAP[benefit.color].split(" ")[1]} rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                  >
                     <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                   </div>
                   <h3 className="text-base sm:text-lg font-bold text-gray-900">

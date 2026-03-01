@@ -1,5 +1,10 @@
 // src/data/mensal-bellas.ts
-export type PlanId = "essencial" | "relax" | "celebridade" | "royal" | "infinity";
+export type PlanId =
+  | "essencial"
+  | "relax"
+  | "celebridade"
+  | "royal"
+  | "infinity";
 export type Plan = {
   id: PlanId;
   name: string;

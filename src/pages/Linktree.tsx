@@ -5,7 +5,11 @@ import { Building2 } from "lucide-react";
 
 import spacoBellasLogo from "@/assets/images/brand/logo.jpg";
 import spacoBellasBackground from "@/assets/images/brand/hero-bg.png";
-import { CONTACT_CONFIG, buildWhatsAppUrl, WHATSAPP_MESSAGES } from "@/config/contacts";
+import {
+  CONTACT_CONFIG,
+  buildWhatsAppUrl,
+  WHATSAPP_MESSAGES,
+} from "@/config/contacts";
 
 interface LinkItem {
   id: string;
@@ -13,17 +17,20 @@ interface LinkItem {
   subtitle?: string;
   href: string;
   external?: boolean;
-  Icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
+  Icon: React.ComponentType<{
+    className?: string;
+    style?: React.CSSProperties;
+  }>;
 }
 
 const PALETTE_BY_ID: Record<string, { base: string; accent: string }> = {
-  institucional:   { base: "#7C3AED", accent: "#A78BFA" }, // purple
+  institucional: { base: "#7C3AED", accent: "#A78BFA" }, // purple
   "mensal-bellas": { base: "#D97706", accent: "#F59E0B" }, // amber
-  celebridades:    { base: "#06B6D4", accent: "#22D3EE" }, // cyan
-  vip:             { base: "#E11D48", accent: "#FB7185" }, // pink
-  empresas:        { base: "#0EA5E9", accent: "#38BDF8" }, // blue
-  whatsapp:        { base: "#16A34A", accent: "#22C55E" }, // green
-  crm:             { base: "#111827", accent: "#06B6D4" }, // dark
+  celebridades: { base: "#06B6D4", accent: "#22D3EE" }, // cyan
+  vip: { base: "#E11D48", accent: "#FB7185" }, // pink
+  empresas: { base: "#0EA5E9", accent: "#38BDF8" }, // blue
+  whatsapp: { base: "#16A34A", accent: "#22C55E" }, // green
+  crm: { base: "#111827", accent: "#06B6D4" }, // dark
 };
 
 const paletteOf = (id: string) =>
@@ -103,7 +110,7 @@ export default function Linktree() {
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-purple-900/70 via-pink-900/60 to-pink-50"></div>
         </div>
-        
+
         {/* Content Layer */}
         <div className="relative z-10 flex flex-col items-center pt-16 pb-6">
           <div className="w-36 h-36 rounded-full overflow-hidden mb-5 ring-4 ring-white shadow-2xl bg-white">
@@ -140,13 +147,17 @@ export default function Linktree() {
             >
               <div
                 className={`relative h-full flex items-center ${
-                  !isEven ? "justify-end text-right flex-row-reverse" : "justify-start text-left flex-row"
+                  !isEven
+                    ? "justify-end text-right flex-row-reverse"
+                    : "justify-start text-left flex-row"
                 } px-6 gap-4 w-full`}
               >
                 <div className="flex-shrink-0" style={{ color: "#FFFFFF" }}>
                   <link.Icon
                     className="w-12 h-12"
-                    style={{ filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.35))" }}
+                    style={{
+                      filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.35))",
+                    }}
                   />
                 </div>
 
@@ -160,7 +171,10 @@ export default function Linktree() {
                   {link.subtitle && (
                     <p
                       className="text-sm md:text-base font-semibold text-white"
-                      style={{ opacity: 0.95, textShadow: "0 1px 0 rgba(0,0,0,0.25)" }}
+                      style={{
+                        opacity: 0.95,
+                        textShadow: "0 1px 0 rgba(0,0,0,0.25)",
+                      }}
                     >
                       {link.subtitle}
                     </p>
@@ -172,11 +186,11 @@ export default function Linktree() {
 
           if (isExternal) {
             return (
-              <a 
-                key={link.id} 
-                href={link.href} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                key={link.id}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block w-full group"
               >
                 {content}
@@ -201,7 +215,8 @@ export default function Linktree() {
           className="text-gray-500 hover:text-pink-500 transition-colors cursor-pointer"
           aria-label="Instagram"
         >
-          <FaWhatsapp className="hidden" /> {/* Using icons from react-icons if possible, or keeping raw SVG for exact style */}
+          <FaWhatsapp className="hidden" />{" "}
+          {/* Using icons from react-icons if possible, or keeping raw SVG for exact style */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="26"
@@ -260,14 +275,15 @@ export default function Linktree() {
       {/* Footer */}
       <footer
         className="mx-4 sm:mx-6 mt-4 mb-16 md:mb-24 text-center text-gray-500 text-sm space-y-1 rounded-2xl bg-white/70 backdrop-blur px-6 pt-6 pb-8 border border-pink-100 shadow-sm"
-        style={{ paddingBottom: "calc(1rem + env(safe-area-inset-bottom, 0px))" }}
+        style={{
+          paddingBottom: "calc(1rem + env(safe-area-inset-bottom, 0px))",
+        }}
       >
-        <div>
-          {CONTACT_CONFIG.ADDRESS}
-        </div>
+        <div>{CONTACT_CONFIG.ADDRESS}</div>
         <div>WhatsApp: {CONTACT_CONFIG.PHONE_DISPLAY}</div>
         <div className="pt-4 text-xs opacity-75">
-          © {new Date().getFullYear()} Spaço Bellas - Todos os direitos reservados
+          © {new Date().getFullYear()} Spaço Bellas - Todos os direitos
+          reservados
         </div>
       </footer>
     </div>

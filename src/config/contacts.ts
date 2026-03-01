@@ -15,13 +15,20 @@ export const CONTACT_CONFIG = {
  */
 export const WHATSAPP_MESSAGES = {
   GENERAL: "Olá! Quero conhecer o Spaço Bellas!",
-  SPA_DAY_CELEBRIDADES: "Olá! Vim pelo site e quero conhecer os pacotes do Spa Day Celebridades!",
-  SPA_DAY_CASAL: "Olá! Vim pelo site e quero conhecer os pacotes do Spa Day para Casal!",
-  SPA_DAY_INDIVIDUAL: "Olá! Vim pelo site e quero conhecer os pacotes do Spa Day Individual!",
-  SPA_DAY_NOIVA: "Olá! Vim pelo site e quero conhecer os pacotes do Spa Day Noiva!",
-  MENSAL_VIP: "Olá! Quero conhecer o Programa Mulheres VIP Bellas e ver os planos.",
-  CORPORATE: "Olá! Gostaria de informações sobre parcerias corporativas com o Spaço Bellas.",
-  CTA_PRE_LAUNCH: "Olá! Quero garantir minha vaga no pré-lançamento do Spa Day das Celebridades!",
+  SPA_DAY_CELEBRIDADES:
+    "Olá! Vim pelo site e quero conhecer os pacotes do Spa Day Celebridades!",
+  SPA_DAY_CASAL:
+    "Olá! Vim pelo site e quero conhecer os pacotes do Spa Day para Casal!",
+  SPA_DAY_INDIVIDUAL:
+    "Olá! Vim pelo site e quero conhecer os pacotes do Spa Day Individual!",
+  SPA_DAY_NOIVA:
+    "Olá! Vim pelo site e quero conhecer os pacotes do Spa Day Noiva!",
+  MENSAL_VIP:
+    "Olá! Quero conhecer o Programa Mulheres VIP Bellas e ver os planos.",
+  CORPORATE:
+    "Olá! Gostaria de informações sobre parcerias corporativas com o Spaço Bellas.",
+  CTA_PRE_LAUNCH:
+    "Olá! Quero garantir minha vaga no pré-lançamento do Spa Day das Celebridades!",
 } as const;
 
 /**
@@ -30,7 +37,10 @@ export const WHATSAPP_MESSAGES = {
  * @param utm - Optional UTM parameters for tracking.
  * @returns A complete WhatsApp link.
  */
-export const buildWhatsAppUrl = (message: string, utm?: Record<string, string>): string => {
+export const buildWhatsAppUrl = (
+  message: string,
+  utm?: Record<string, string>,
+): string => {
   const base = `https://wa.me/${CONTACT_CONFIG.WHATSAPP_NUMBER}`;
   const params = new URLSearchParams({ text: message });
 

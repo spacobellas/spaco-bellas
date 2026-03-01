@@ -1,5 +1,13 @@
 import { Card } from "@/components/ui/card";
-import { Sparkles, Heart, Camera, Clock, Home, Lightbulb, Gift } from "lucide-react";
+import {
+  Sparkles,
+  Heart,
+  Camera,
+  Clock,
+  Home,
+  Lightbulb,
+  Gift,
+} from "lucide-react";
 import { useRef } from "react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
@@ -7,31 +15,36 @@ const differentials = [
   {
     icon: Home,
     title: "Banheira exclusiva e aromaterapia",
-    description: "Ambiente privativo com essências personalizadas para seu total relaxamento.",
+    description:
+      "Ambiente privativo com essências personalizadas para seu total relaxamento.",
     color: "from-purple-500 to-purple-600",
   },
   {
     icon: Heart,
     title: "Atendimento 100% personalizado",
-    description: "Cada detalhe pensado especialmente para você, com cuidado humanizado.",
+    description:
+      "Cada detalhe pensado especialmente para você, com cuidado humanizado.",
     color: "from-pink-500 to-pink-600",
   },
   {
     icon: Camera,
     title: "Espaço instagramável profissional",
-    description: "Iluminação e cenário perfeitos para registrar seu dia de estrela.",
+    description:
+      "Iluminação e cenário perfeitos para registrar seu dia de estrela.",
     color: "from-purple-600 to-pink-500",
   },
   {
     icon: Lightbulb,
     title: "Registro audiovisual da experiência",
-    description: "Leve suas memórias em fotos e vídeos profissionais para sempre.",
+    description:
+      "Leve suas memórias em fotos e vídeos profissionais para sempre.",
     color: "from-amber-500 to-orange-500",
   },
   {
     icon: Clock,
     title: "Atendimento com hora marcada",
-    description: "Sem espera, sem pressa. Seu momento é exclusivo e reservado para você.",
+    description:
+      "Sem espera, sem pressa. Seu momento é exclusivo e reservado para você.",
     color: "from-teal-500 to-cyan-500",
   },
 ];
@@ -70,7 +83,8 @@ export function Differentials() {
           </h2>
 
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
-            Uma experiência pensada em cada detalhe para você se sentir especial.
+            Uma experiência pensada em cada detalhe para você se sentir
+            especial.
           </p>
         </div>
 
@@ -93,7 +107,9 @@ export function Differentials() {
                   />
 
                   <div className="flex flex-col items-start space-y-4 relative z-10">
-                    <div className={`w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
+                    <div
+                      className={`w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}
+                    >
                       <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                     </div>
 
@@ -105,7 +121,9 @@ export function Differentials() {
                       {item.description}
                     </p>
 
-                    <div className={`w-0 h-1 bg-gradient-to-r ${item.color} group-hover:w-full transition-all duration-500 rounded-full`} />
+                    <div
+                      className={`w-0 h-1 bg-gradient-to-r ${item.color} group-hover:w-full transition-all duration-500 rounded-full`}
+                    />
                   </div>
 
                   <Sparkles className="absolute top-4 right-4 w-5 h-5 text-[var(--primary-purple)] opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
@@ -131,7 +149,9 @@ export function Differentials() {
                   />
 
                   <div className="flex flex-col items-start space-y-4 relative z-10">
-                    <div className={`w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
+                    <div
+                      className={`w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}
+                    >
                       <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                     </div>
 
@@ -143,7 +163,9 @@ export function Differentials() {
                       {item.description}
                     </p>
 
-                    <div className={`w-0 h-1 bg-gradient-to-r ${item.color} group-hover:w-full transition-all duration-500 rounded-full`} />
+                    <div
+                      className={`w-0 h-1 bg-gradient-to-r ${item.color} group-hover:w-full transition-all duration-500 rounded-full`}
+                    />
                   </div>
 
                   <Sparkles className="absolute top-4 right-4 w-5 h-5 text-[var(--primary-purple)] opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
@@ -160,7 +182,8 @@ export function Differentials() {
               Toques especiais que fazem a diferença
             </h3>
             <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
-              Detalhes emocionais que transformam sua experiência em algo inesquecível
+              Detalhes emocionais que transformam sua experiência em algo
+              inesquecível
             </p>
           </div>
 
@@ -170,8 +193,13 @@ export function Differentials() {
                 <Heart className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">Mensagem Surpresa</h4>
-                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">Receba uma mensagem especial da sua família durante a experiência</p>
+                <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">
+                  Mensagem Surpresa
+                </h4>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                  Receba uma mensagem especial da sua família durante a
+                  experiência
+                </p>
               </div>
             </div>
 
@@ -180,8 +208,13 @@ export function Differentials() {
                 <Sparkles className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">Certificado Físico</h4>
-                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">"Eu fui Celebridade Bellas" - leve para casa sua memória especial 💜</p>
+                <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">
+                  Certificado Físico
+                </h4>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                  "Eu fui Celebridade Bellas" - leve para casa sua memória
+                  especial 💜
+                </p>
               </div>
             </div>
 
@@ -190,8 +223,12 @@ export function Differentials() {
                 <Gift className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">Bombom Premium</h4>
-                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">Finalização doce e especial para seu dia perfeito</p>
+                <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">
+                  Bombom Premium
+                </h4>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                  Finalização doce e especial para seu dia perfeito
+                </p>
               </div>
             </div>
           </div>
@@ -202,11 +239,11 @@ export function Differentials() {
           <div className="relative inline-block px-4">
             <div className="absolute -top-6 -left-2 w-12 h-12 bg-purple-100 rounded-full opacity-50" />
             <div className="absolute -bottom-6 -right-2 w-12 h-12 bg-pink-100 rounded-full opacity-50" />
-            
+
             <p className="text-xl sm:text-2xl md:text-3xl font-serif italic text-gray-700 px-4 sm:px-8 relative z-10 leading-relaxed">
               O verdadeiro luxo é cuidar de você com tempo e amor
             </p>
-            
+
             <Sparkles className="absolute -top-4 left-0 w-6 h-6 sm:w-8 sm:h-8 text-[var(--primary-purple)] opacity-30" />
             <Sparkles className="absolute -bottom-4 right-0 w-6 h-6 sm:w-8 sm:h-8 text-pink-500 opacity-30" />
           </div>

@@ -48,12 +48,15 @@ export function Hero() {
 
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
-            Toda mulher merece<br />um dia de estrela
+            Toda mulher merece
+            <br />
+            um dia de estrela
           </h1>
 
           {/* Description */}
           <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed px-4">
-            Uma experiência única que combina beleza, relaxamento e o luxo que você merece.
+            Uma experiência única que combina beleza, relaxamento e o luxo que
+            você merece.
           </p>
 
           {/* CTA Button */}
@@ -71,16 +74,28 @@ export function Hero() {
           {/* Stats */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 pt-8 sm:pt-12 max-w-3xl mx-auto">
             <div className="space-y-1 sm:space-y-2">
-              <div className="text-3xl sm:text-4xl font-bold text-white">2.500+</div>
-              <div className="text-sm sm:text-base text-white/80">Clientes Satisfeitas</div>
+              <div className="text-3xl sm:text-4xl font-bold text-white">
+                2.500+
+              </div>
+              <div className="text-sm sm:text-base text-white/80">
+                Clientes Satisfeitas
+              </div>
             </div>
             <div className="space-y-1 sm:space-y-2">
-              <div className="text-3xl sm:text-4xl font-bold text-white">4.9/5</div>
-              <div className="text-sm sm:text-base text-white/80">Avaliação Média</div>
+              <div className="text-3xl sm:text-4xl font-bold text-white">
+                4.9/5
+              </div>
+              <div className="text-sm sm:text-base text-white/80">
+                Avaliação Média
+              </div>
             </div>
             <div className="space-y-1 sm:space-y-2">
-              <div className="text-3xl sm:text-4xl font-bold text-white">10 anos</div>
-              <div className="text-sm sm:text-base text-white/80">De Excelência</div>
+              <div className="text-3xl sm:text-4xl font-bold text-white">
+                10 anos
+              </div>
+              <div className="text-sm sm:text-base text-white/80">
+                De Excelência
+              </div>
             </div>
           </div>
         </div>
@@ -89,7 +104,9 @@ export function Hero() {
       {/* Scroll Down Button - Hidden on mobile */}
       <button
         onClick={() => {
-          document.getElementById("introduction")?.scrollIntoView({ behavior: "smooth" });
+          document
+            .getElementById("introduction")
+            ?.scrollIntoView({ behavior: "smooth" });
         }}
         className="hidden md:flex absolute bottom-12 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-2 text-white/80 hover:text-white transition-all duration-300 group"
         aria-label="Rolar para baixo"

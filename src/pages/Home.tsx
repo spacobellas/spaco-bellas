@@ -18,22 +18,22 @@ export default function Home() {
     <>
       <Header />
       <main>
-        {/* 1. Hero - Viva o seu dia de estrela */}
+        {/* 1. Hero - Experience your star day */}
         <Hero />
-        
-        {/* 2. Apresentação Emocional - Uma experiência criada para você */}
+
+        {/* 2. Introduction - An experience crafted for you */}
         <Introduction />
-        
-        {/* 3. Pacotes - Dia de Estrela, Rainha e Diva */}
+
+        {/* 3. Packages - Star, Queen, and Diva Day */}
         <SpaDayPackages packages={packagesCelebridades} />
-        
-        {/* 4. Differentials - Por que o Spa das Celebridades é único */}
+
+        {/* 4. Differentials - What makes Spa das Celebridades unique */}
         <Differentials />
-        
-        {/* 5. Depoimentos - Histórias de Transformação */}
+
+        {/* 5. Testimonials - Stories of transformation */}
         <Testimonials />
-        
-        {/* 6. CTA Final - Escassez e Grupo VIP */}
+
+        {/* 6. Final CTA - Urgency and VIP Group */}
         <CTA />
       </main>
       <Footer />

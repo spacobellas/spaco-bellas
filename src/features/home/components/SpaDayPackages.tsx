@@ -31,19 +31,19 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
   const trackRef = useRef<HTMLDivElement | null>(null);
   const [, navigate] = useLocation();
 
-  // ── Fade-in ao entrar na viewport ─────────────────────────────────────────
+  // ── Fade-in on viewport entry ─────────────────────────────────────────
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.05 }
+      { threshold: 0.05 },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  // ── Verifica se o carrossel realmente precisa rolar ──────────────────────
+  // ── Check if carousel requires scrolling ──────────────────────
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -59,7 +59,7 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
     return () => observer.disconnect();
   }, [packages.length]);
 
-  // ── Sincroniza o dot ativo com o scroll real ───────────────────────────────
+  // ── Sync active dot with real scroll position ───────────────────────────────
   const syncIndex = useCallback(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -77,7 +77,7 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
     return () => track.removeEventListener("scroll", syncIndex);
   }, [syncIndex]);
 
-  // ── Scroll programático para um índice ────────────────────────────────────
+  // ── Programmatic scroll to index ────────────────────────────────────
   const scrollTo = useCallback(
     (index: number) => {
       const track = trackRef.current;
@@ -90,13 +90,13 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
       track.scrollTo({ left: clamped * (cardWidth + gap), behavior: "smooth" });
       setActiveIndex(clamped);
     },
-    [packages.length]
+    [packages.length],
   );
 
   const prev = () => scrollTo(activeIndex - 1);
   const next = () => scrollTo(activeIndex + 1);
 
-  // ── Drag-to-scroll no desktop ─────────────────────────────────────────────
+  // ── Desktop drag-to-scroll ─────────────────────────────────────────────
   const onMouseDown = (e: React.MouseEvent) => {
     if (!trackRef.current) return;
     if (trackRef.current.scrollWidth <= trackRef.current.clientWidth) return;
@@ -112,7 +112,7 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
   };
   const onMouseUp = () => setIsDragging(false);
 
-  // ── Ação do CTA ───────────────────────────────────────────────────────────
+  // ── CTA Action ───────────────────────────────────────────────────────────
   const handleCtaClick = (pkg: SpaPackage) => {
     if (pkg.pageUrl) {
       navigate(pkg.pageUrl);
@@ -122,12 +122,12 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
       window.open(
         `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`,
         "_blank",
-        "noopener,noreferrer"
+        "noopener,noreferrer",
       );
     }
   };
 
-  // ── Lógica para centralizar e esconder controles se os itens couberem ─────
+  // ── Logic to center and hide controls if items fit ─────
   let carouselControlsClass = "flex";
   let trackJustifyClass = "";
 
@@ -149,7 +149,7 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
       className="relative overflow-hidden py-16 md:py-24"
       style={{ backgroundColor: "#faebff" }}
     >
-      {/* Blobs decorativos */}
+      {/* Decorative blobs */}
       <div className="pointer-events-none absolute inset-0 -z-0">
         <div className="absolute -left-32 -top-32 h-80 w-80 rounded-full bg-purple-300/25 blur-3xl" />
         <div className="absolute -right-32 -bottom-32 h-80 w-80 rounded-full bg-pink-300/25 blur-3xl" />
@@ -157,7 +157,7 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Cabeçalho */}
+        {/* Header */}
         <div className="mb-10 text-center sm:mb-14">
           <div className="inline-flex items-center gap-2 rounded-full bg-purple-500/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-purple-700">
             <Sparkles className="h-4 w-4" />
@@ -167,13 +167,14 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
             Escolha o seu dia perfeito
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg">
-            Cada experiência foi pensada para transformar seu momento em algo inesquecível
+            Cada experiência foi pensada para transformar seu momento em algo
+            inesquecível
           </p>
         </div>
 
-        {/* Carrossel */}
+        {/* Carousel */}
         <div className="relative">
-          {/* Botão ← */}
+          {/* Left button */}
           <button
             onClick={prev}
             disabled={activeIndex === 0}
@@ -192,7 +193,7 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
             <ChevronLeft className="h-5 w-5" />
           </button>
 
-          {/* Botão → */}
+          {/* Right button */}
           <button
             onClick={next}
             disabled={activeIndex === packages.length - 1}
@@ -264,11 +265,13 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
                       }
                     `}
                   >
-                    {/* Faixa de cor no topo */}
-                    <div className={`h-2 w-full shrink-0 bg-gradient-to-r ${pkg.color}`} />
+                    {/* Top color strip */}
+                    <div
+                      className={`h-2 w-full shrink-0 bg-gradient-to-r ${pkg.color}`}
+                    />
 
                     <CardContent className="flex flex-col flex-1 gap-5 p-6 sm:p-8">
-                      {/* Ícone + Badge */}
+                      {/* Icon and Badge */}
                       <div className="flex items-start justify-between gap-3">
                         <div
                           className={`
@@ -288,7 +291,7 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
                         )}
                       </div>
 
-                      {/* Nome + duração + descrição */}
+                      {/* Title, duration, and description */}
                       <div className="space-y-1">
                         <h3 className="text-lg font-bold leading-snug text-gray-900 sm:text-xl">
                           {pkg.tier}
@@ -301,23 +304,27 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
                         </p>
                       </div>
 
-                      {/* Preço */}
+                      {/* Pricing */}
                       <div className="rounded-2xl bg-gray-50 px-4 py-4">
                         <p className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
                           {pkg.installment}
                         </p>
                         <p className="mt-0.5 text-xs text-gray-400">
                           ou{" "}
-                          <span className="font-medium text-gray-500">{pkg.cash}</span>
+                          <span className="font-medium text-gray-500">
+                            {pkg.cash}
+                          </span>
                         </p>
                       </div>
 
                       {/* Features */}
                       <ul className="space-y-2.5 mb-6">
                         {pkg.features.map((feature, idx) => {
-                          // Truque visual: se a feature começar com "Tudo do", usamos um ícone de "Mais" em vez do "Check" para dar destaque.
-                          const isIncludes = feature.toLowerCase().startsWith("tudo do");
-                          
+                          // Visual cue: if feature starts with "Tudo do", use a "Plus" icon instead of "Check" for emphasis.
+                          const isIncludes = feature
+                            .toLowerCase()
+                            .startsWith("tudo do");
+
                           return (
                             <li key={idx} className="flex items-start gap-2.5">
                               {isIncludes ? (
@@ -325,7 +332,9 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
                               ) : (
                                 <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
                               )}
-                              <span className={`text-sm leading-relaxed ${isIncludes ? "font-semibold text-purple-700" : "text-gray-700"}`}>
+                              <span
+                                className={`text-sm leading-relaxed ${isIncludes ? "font-semibold text-purple-700" : "text-gray-700"}`}
+                              >
                                 {feature}
                               </span>
                             </li>
@@ -333,7 +342,7 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
                         })}
                       </ul>
 
-                      {/* CTA empurrado para o final pelo mt-auto */}
+                      {/* CTA pushed to bottom by mt-auto */}
                       <Button
                         size="lg"
                         className={`
@@ -389,15 +398,15 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
           )}
         </div>
 
-        {/* Rodapé */}
+        {/* Footer */}
         <div className="mx-auto mt-12 max-w-2xl text-center text-gray-500">
           <p className="flex flex-wrap items-center justify-center gap-1.5 text-sm sm:text-base">
             <Sparkles className="h-4 w-4 text-purple-500" />
             Todos os pacotes incluem roupão personalizado e ambiente exclusivo.
           </p>
           <p className="mt-1 text-xs text-gray-400 sm:text-sm">
-            Roupão disponível para uso durante a experiência (não incluso para levar).
-            Agendamento via WhatsApp 💜
+            Roupão disponível para uso durante a experiência (não incluso para
+            levar). Agendamento via WhatsApp 💜
           </p>
         </div>
       </div>

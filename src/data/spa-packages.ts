@@ -18,8 +18,8 @@ export interface SpaPackage {
   ctaLabel: string;
   ctaIcon: LucideIcon;
   /**
-   * Se definido, o CTA navega para esta rota interna.
-   * Se undefined, o CTA abre o WhatsApp.
+   * If defined, the CTA navigates to this internal route.
+   * If undefined, the CTA opens WhatsApp.
    */
   pageUrl?: string;
 }
@@ -43,7 +43,8 @@ export const allSpaPackages: SpaPackage[] = [
     icon: Star,
     badge: null,
     badgeColor: "bg-pink-500",
-    whatsappText: "Olá! Vim pelo site e tenho interesse no Spa Day Individual Básico!",
+    whatsappText:
+      "Olá! Vim pelo site e tenho interesse no Spa Day Individual Básico!",
     ctaLabel: "Ver detalhes deste pacote",
     ctaIcon: Star,
     pageUrl: "/spa-individual",
@@ -55,7 +56,8 @@ export const allSpaPackages: SpaPackage[] = [
     installment: "12x de R$ 39,70",
     cash: "R$ 397 à vista no Pix",
     duration: "2h de experiência",
-    description: "Ideal para aniversário, se auto presentear ou presentear quem você ama!",
+    description:
+      "Ideal para aniversário, se auto presentear ou presentear quem você ama!",
     features: [
       "Spa dos pés (30 min)",
       "Massagem Relaxante (20 min)",
@@ -69,7 +71,8 @@ export const allSpaPackages: SpaPackage[] = [
     icon: Heart,
     badge: "Mais Popular",
     badgeColor: "bg-purple-500",
-    whatsappText: "Olá! Vim pelo site e tenho interesse no Spa Day Relaxamento Individual Premium!",
+    whatsappText:
+      "Olá! Vim pelo site e tenho interesse no Spa Day Relaxamento Individual Premium!",
     ctaLabel: "Ver detalhes deste pacote",
     ctaIcon: Heart,
     pageUrl: "/spa-individual",
@@ -105,7 +108,8 @@ export const allSpaPackages: SpaPackage[] = [
     installment: "12x de R$ 89,70",
     cash: "R$ 897 à vista no Pix",
     duration: "3h30 de experiência a dois",
-    description: "Imersão completa para vocês dois. Relaxamento e conexão em alto nível.",
+    description:
+      "Imersão completa para vocês dois. Relaxamento e conexão em alto nível.",
     features: [
       "Spa dos pés",
       "Banheira relaxante com aromaterapia",
@@ -124,7 +128,8 @@ export const allSpaPackages: SpaPackage[] = [
     icon: Crown,
     badge: "Mais Vendido!",
     badgeColor: "bg-purple-600",
-    whatsappText: "Olá! Vim pelo site e tenho interesse no Spa Day Casal (3h30)!",
+    whatsappText:
+      "Olá! Vim pelo site e tenho interesse no Spa Day Casal (3h30)!",
     ctaLabel: "Ver detalhes deste pacote",
     ctaIcon: Crown,
     pageUrl: "/spa-casal",
@@ -136,7 +141,8 @@ export const allSpaPackages: SpaPackage[] = [
     installment: "12x de R$ 149,70",
     cash: "R$ 1.497 à vista no Pix",
     duration: "3h30 de pura celebração",
-    description: "O luxo completo. Viva seu dia de celebridade e saia transformada.",
+    description:
+      "O luxo completo. Viva seu dia de celebridade e saia transformada.",
     features: [
       "Spa dos pés",
       "Banheira relaxante com aromaterapia",
@@ -164,7 +170,8 @@ export const allSpaPackages: SpaPackage[] = [
     icon: Crown,
     badge: "✨ Experiência Completa",
     badgeColor: "bg-amber-500",
-    whatsappText: "Olá! Vim pelo site e tenho interesse no Spa Day Celebridade!",
+    whatsappText:
+      "Olá! Vim pelo site e tenho interesse no Spa Day Celebridade!",
     ctaLabel: "Quero meu Spa Day Celebridade",
     ctaIcon: Sparkles,
   },
@@ -175,7 +182,8 @@ export const allSpaPackages: SpaPackage[] = [
     installment: "12x de R$ 149,70",
     cash: "R$ 1.497 à vista no Pix",
     duration: "3h30 — O seu grande dia",
-    description: "Uma experiência única e inesquecível para a noiva mais linda do mundo.",
+    description:
+      "Uma experiência única e inesquecível para a noiva mais linda do mundo.",
     features: [
       "Spa dos pés",
       "Banheira relaxante com aromaterapia",
@@ -214,30 +222,35 @@ export const allSpaPackages: SpaPackage[] = [
 const withWhatsApp = (pkgs: SpaPackage[]): SpaPackage[] =>
   pkgs.map((p) => ({ ...p, pageUrl: undefined }));
 
-// ─── Filtros por página ────────────────────────────────────────────────────────
+// ─── Page Filters ────────────────────────────────────────────────────────
 
 /**
- * /spa-celebridades — visão geral (4 caixinhas).
- * Cards com pageUrl navegam para a sub-página dedicada.
- * Card "Celebridade" (sem pageUrl) vai direto ao WhatsApp.
+ * /spa-celebridades — overview (4 cards).
+ * Cards with pageUrl navigate to the dedicated sub-page.
+ * "Celebridade" card (without pageUrl) goes directly to WhatsApp.
  */
 export const packagesCelebridades = allSpaPackages.filter((p) =>
-  ["individual-basico", "individual-premium", "casal-3h30", "celebridade"].includes(p.id)
+  [
+    "individual-basico",
+    "individual-premium",
+    "casal-3h30",
+    "celebridade",
+  ].includes(p.id),
 );
 
-/** /spa-individual — Ideal para um momento sozinha de relaxamento. Botões abrem WhatsApp. */
+/** /spa-individual — Ideal for a solo relaxation moment. Buttons open WhatsApp. */
 export const packagesIndividual = withWhatsApp(
   allSpaPackages.filter((p) =>
-    ["individual-basico", "individual-premium", "celebridade"].includes(p.id)
-  )
+    ["individual-basico", "individual-premium", "celebridade"].includes(p.id),
+  ),
 );
 
-/** /spa-casal — Serve para casal, mãe e filha, amigas... Botões abrem WhatsApp. */
+/** /spa-casal — Suitable for couples, mother and daughter, friends... Buttons open WhatsApp. */
 export const packagesCasal = withWhatsApp(
-  allSpaPackages.filter((p) => ["casal-2h", "casal-3h30"].includes(p.id))
+  allSpaPackages.filter((p) => ["casal-2h", "casal-3h30"].includes(p.id)),
 );
 
-/** /spa-diadanoiva — Noiva ou noiva e madrinhas. Botão abre WhatsApp. */
+/** /spa-diadanoiva — Bride or bride and bridesmaids. Button opens WhatsApp. */
 export const packagesNoiva = withWhatsApp(
-  allSpaPackages.filter((p) => p.id === "noiva")
+  allSpaPackages.filter((p) => p.id === "noiva"),
 );

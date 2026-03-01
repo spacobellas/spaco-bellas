@@ -15,7 +15,7 @@ export function useIntersectionObserver(
     root = null,
     rootMargin = "0%",
     freezeOnceVisible = true,
-  }: UseIntersectionObserverOptions = {}
+  }: UseIntersectionObserverOptions = {},
 ): IntersectionObserverEntry | undefined {
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
 

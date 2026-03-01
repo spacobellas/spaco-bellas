@@ -38,10 +38,10 @@ export function Hero({
     setIsVisible(true);
   }, []);
 
-  const whatsappUrl = buildWhatsAppUrl(whatsappMsg, { 
-    utm_source: "site", 
-    utm_medium: "vip", 
-    utm_content: "hero_cta" 
+  const whatsappUrl = buildWhatsAppUrl(whatsappMsg, {
+    utm_source: "site",
+    utm_medium: "vip",
+    utm_content: "hero_cta",
   });
 
   return (
@@ -121,7 +121,8 @@ export function Hero({
           </a>
 
           <p className="mt-4 text-sm opacity-80" style={{ color: COLORS.text }}>
-            Um único lugar para fazer tudo com carinho e sair se sentindo você por inteiro.
+            Um único lugar para fazer tudo com carinho e sair se sentindo você
+            por inteiro.
           </p>
         </div>
 

@@ -24,7 +24,10 @@ const offerings = [
 
 export function Introduction() {
   return (
-    <section id="introduction" className="py-24 bg-gradient-to-b from-white to-purple-50/30">
+    <section
+      id="introduction"
+      className="py-24 bg-gradient-to-b from-white to-purple-50/30"
+    >
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-purple-100 rounded-full px-6 py-2 mb-6">
@@ -39,11 +42,18 @@ export function Introduction() {
           </h2>
 
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Aqui no Spaço Bellas, acreditamos que toda mulher merece se sentir valorizada, confiante e linda — não só em datas especiais, mas em todos os dias.
+            Aqui no Spaço Bellas, acreditamos que toda mulher merece se sentir
+            valorizada, confiante e linda — não só em datas especiais, mas em
+            todos os dias.
           </p>
 
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mt-4">
-            Pensando nisso, criamos o <span className="font-semibold text-[var(--primary-purple)]">Spa Day das Celebridades</span>, uma experiência de beleza e bem-estar onde você é a protagonista do seu próprio momento.
+            Pensando nisso, criamos o{" "}
+            <span className="font-semibold text-[var(--primary-purple)]">
+              Spa Day das Celebridades
+            </span>
+            , uma experiência de beleza e bem-estar onde você é a protagonista
+            do seu próprio momento.
           </p>
         </div>
 
@@ -95,11 +105,16 @@ export function Introduction() {
         {/* Decorative Quote */}
         <div className="mt-16 text-center">
           <div className="relative inline-block">
-            <span className="text-6xl text-purple-200 absolute -top-4 -left-4">"</span>
+            <span className="text-6xl text-purple-200 absolute -top-4 -left-4">
+              "
+            </span>
             <p className="text-2xl md:text-3xl font-serif italic text-gray-700 px-8 relative z-10">
-              Cada experiência é cuidadosamente projetada para proporcionar momentos únicos de relaxamento e renovação
+              Cada experiência é cuidadosamente projetada para proporcionar
+              momentos únicos de relaxamento e renovação
             </p>
-            <span className="text-6xl text-purple-200 absolute -bottom-8 -right-4">"</span>
+            <span className="text-6xl text-purple-200 absolute -bottom-8 -right-4">
+              "
+            </span>
           </div>
         </div>
       </div>

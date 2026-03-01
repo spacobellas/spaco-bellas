@@ -1,7 +1,18 @@
-// src/components/sections/empresas/ResultadosEmpresas.tsx
-import { BarChartHorizontalBig, MessageSquareMore, Heart, CheckCircle2, Sparkles } from "lucide-react";
+// src/features/corporate/components/Results.tsx
+import {
+  BarChartHorizontalBig,
+  MessageSquareMore,
+  Heart,
+  CheckCircle2,
+  Sparkles,
+} from "lucide-react";
 
-const COLORS = { lilacBg: "#F6EDF9", gold: "#C7A45C", text: "#2F2F2F", primary: "#8E5BAE" };
+const COLORS = {
+  lilacBg: "#F6EDF9",
+  gold: "#C7A45C",
+  text: "#2F2F2F",
+  primary: "#8E5BAE",
+};
 
 type Card = {
   icon: React.ComponentType<{ className?: string }>;
@@ -51,7 +62,11 @@ function Pill({ label }: { label: string }) {
   return (
     <span
       className="inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-medium"
-      style={{ backgroundColor: "#FAF8FB", color: COLORS.primary, border: `1px solid ${COLORS.primary}20` }}
+      style={{
+        backgroundColor: "#FAF8FB",
+        color: COLORS.primary,
+        border: `1px solid ${COLORS.primary}20`,
+      }}
     >
       {label}
     </span>
@@ -69,7 +84,11 @@ export function Results() {
         <div className="flex w-full items-center justify-center">
           <span
             className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs"
-            style={{ backgroundColor: "#FAF8FB", color: COLORS.primary, border: `1px solid ${COLORS.primary}20` }}
+            style={{
+              backgroundColor: "#FAF8FB",
+              color: COLORS.primary,
+              border: `1px solid ${COLORS.primary}20`,
+            }}
           >
             <Sparkles size={14} />
             Provas e entregas executivas
@@ -77,11 +96,15 @@ export function Results() {
         </div>
 
         <header className="mx-auto mt-4 max-w-3xl text-center">
-          <h2 className="text-2xl md:text-3xl font-semibold" style={{ color: COLORS.gold }}>
+          <h2
+            className="text-2xl md:text-3xl font-semibold"
+            style={{ color: COLORS.gold }}
+          >
             Provas reais de que o bem‑estar gera resultado
           </h2>
           <p className="mt-2 opacity-90">
-            Relatório prático para decisões: dados objetivos e humanidade que se vê nos detalhes.
+            Relatório prático para decisões: dados objetivos e humanidade que se
+            vê nos detalhes.
           </p>
         </header>
 
@@ -92,18 +115,24 @@ export function Results() {
               className="group relative overflow-hidden rounded-2xl bg-white/90 p-5 shadow-lg backdrop-blur-sm transition"
               style={{ border: "1px solid rgba(142,91,174,0.10)" }}
             >
-              {/* Barra de acento */}
+              {/* Accent bar */}
               <div
                 className="absolute inset-x-0 top-0 h-1"
-                style={{ background: "linear-gradient(90deg, #8E5BAE 0%, rgba(199,164,92,0.7) 50%, #8E5BAE 100%)" }}
+                style={{
+                  background:
+                    "linear-gradient(90deg, #8E5BAE 0%, rgba(199,164,92,0.7) 50%, #8E5BAE 100%)",
+                }}
                 aria-hidden
               />
 
-              {/* Cabeçalho */}
+              {/* Header */}
               <div className="flex items-center gap-3">
                 <div
                   className="relative inline-flex h-10 w-10 items-center justify-center rounded-full"
-                  style={{ background: "#F6EDF9", boxShadow: `0 0 0 2px ${COLORS.gold}` }}
+                  style={{
+                    background: "#F6EDF9",
+                    boxShadow: `0 0 0 2px ${COLORS.gold}`,
+                  }}
                   aria-hidden
                 >
                   <it.icon className="text-[#8E5BAE]" />
@@ -111,7 +140,7 @@ export function Results() {
                 <h3 className="text-[15px] font-semibold">{it.title}</h3>
               </div>
 
-              {/* Descrição */}
+              {/* Description */}
               <p className="mt-2 text-sm opacity-90">{it.desc}</p>
 
               {/* Chips */}
@@ -121,17 +150,21 @@ export function Results() {
                 ))}
               </div>
 
-              {/* Bullets */}
+              {/* Bullet points */}
               <ul className="mt-4 space-y-2 text-sm">
                 {it.bullets.map((b, i) => (
                   <li key={i} className="flex items-start gap-2">
-                    <CheckCircle2 size={18} className="mt-0.5 text-emerald-600" aria-hidden />
+                    <CheckCircle2
+                      size={18}
+                      className="mt-0.5 text-emerald-600"
+                      aria-hidden
+                    />
                     <span>{b}</span>
                   </li>
                 ))}
               </ul>
 
-              {/* Hover glow */}
+              {/* Hover glow effect */}
               <div
                 className="pointer-events-none absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
                 style={{ boxShadow: "0 0 0 3px rgba(142,91,174,0.12) inset" }}

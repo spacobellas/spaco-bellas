@@ -3,11 +3,11 @@ import { Sparkles, HeartHandshake, MessageCircle } from "lucide-react";
 
 import imgAcolhedor from "@/assets/images/membership/escuta/acolhedor.jpg";
 
-const COLORS = { 
-  lilacBg: "#F6EDF9", 
-  gold: "#C7A45C", 
-  text: "#2F2F2F", 
-  primary: "#8E5BAE" 
+const COLORS = {
+  lilacBg: "#F6EDF9",
+  gold: "#C7A45C",
+  text: "#2F2F2F",
+  primary: "#8E5BAE",
 };
 
 /**
@@ -16,7 +16,7 @@ const COLORS = {
  */
 export function Introduction() {
   const [isVisible, setIsVisible] = useState(false);
-  
+
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -32,10 +32,10 @@ export function Introduction() {
         <div className="flex w-full items-center justify-center">
           <span
             className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs"
-            style={{ 
-              backgroundColor: "#FAF8FB", 
-              color: COLORS.primary, 
-              border: `1px solid ${COLORS.primary}20` 
+            style={{
+              backgroundColor: "#FAF8FB",
+              color: COLORS.primary,
+              border: `1px solid ${COLORS.primary}20`,
             }}
           >
             <Sparkles size={14} />
@@ -57,7 +57,8 @@ export function Introduction() {
             Espaço Escuta Bellas
           </h2>
           <p className="mt-2 opacity-90">
-            Um ambiente para conversar, desabafar e se reconectar — com escuta empática e sem julgamentos.
+            Um ambiente para conversar, desabafar e se reconectar — com escuta
+            empática e sem julgamentos.
           </p>
         </header>
 
@@ -77,30 +78,44 @@ export function Introduction() {
                 >
                   <HeartHandshake size={22} />
                 </div>
-                <h3 className="text-lg font-semibold">Acolhimento de verdade</h3>
+                <h3 className="text-lg font-semibold">
+                  Acolhimento de verdade
+                </h3>
               </div>
 
               <p className="mt-2 text-sm opacity-90">
-                Cada assinante tem acesso à escuta empática com a Luzinete ou uma colaboradora do Bellas, em um espaço reservado e seguro.
+                Cada assinante tem acesso à escuta empática com a Luzinete ou
+                uma colaboradora do Bellas, em um espaço reservado e seguro.
               </p>
 
               <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                 <li className="flex items-start gap-2">
-                  <MessageCircle size={18} className="mt-0.5 text-[#8E5BAE]" aria-hidden />
+                  <MessageCircle
+                    size={18}
+                    className="mt-0.5 text-[#8E5BAE]"
+                    aria-hidden
+                  />
                   <span className="text-sm">
-                    Quando necessário, você ganha 30 minutos com psicóloga parceira — totalmente gratuito.
+                    Quando necessário, você ganha 30 minutos com psicóloga
+                    parceira — totalmente gratuito.
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <MessageCircle size={18} className="mt-0.5 text-[#8E5BAE]" aria-hidden />
+                  <MessageCircle
+                    size={18}
+                    className="mt-0.5 text-[#8E5BAE]"
+                    aria-hidden
+                  />
                   <span className="text-sm">
-                    Acolhimento emocional faz parte do autocuidado: aqui, você é ouvida com carinho e respeito.
+                    Acolhimento emocional faz parte do autocuidado: aqui, você é
+                    ouvida com carinho e respeito.
                   </span>
                 </li>
               </ul>
 
               <p className="mt-4 text-xs opacity-75">
-                Agende sua sessão de escuta junto com seu horário do mês e viva a experiência completa de cuidado.
+                Agende sua sessão de escuta junto com seu horário do mês e viva
+                a experiência completa de cuidado.
               </p>
             </div>
           </div>

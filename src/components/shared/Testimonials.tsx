@@ -77,7 +77,9 @@ export function Testimonials({
 
   const goToPrevious = () => {
     setIsAutoPlaying(false);
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
+    );
   };
 
   const goToSlide = (index: number) => {
@@ -140,7 +142,8 @@ export function Testimonials({
                   className="group relative w-full overflow-hidden rounded-2xl border border-purple-100 bg-white shadow-xl transition-all duration-300 hover:-translate-y-2 hover:border-purple-200 hover:shadow-2xl"
                 >
                   <div className="relative w-full overflow-hidden bg-white">
-                    <div className="block pt-[56.25%]" /> {/* 16:9 aspect ratio */}
+                    <div className="block pt-[56.25%]" />{" "}
+                    {/* 16:9 aspect ratio */}
                     <img
                       src={item.imageSrc}
                       alt={item.imageAlt}

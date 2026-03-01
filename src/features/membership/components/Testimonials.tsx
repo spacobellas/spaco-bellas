@@ -1,8 +1,13 @@
-// src/components/sections/mensal-bellas/TestimonialsVip.tsx
+// src/features/membership/components/Testimonials.tsx
 import { useEffect, useRef, useState } from "react";
 import { Star, Quote, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 
-const COLORS = { lilacBg: "#F6EDF9", gold: "#C7A45C", text: "#2F2F2F", primary: "#8E5BAE" };
+const COLORS = {
+  lilacBg: "#F6EDF9",
+  gold: "#C7A45C",
+  text: "#2F2F2F",
+  primary: "#8E5BAE",
+};
 
 type Testimonial = {
   id: string;
@@ -82,7 +87,7 @@ export function Testimonials() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setIsVisible(true),
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -92,7 +97,7 @@ export function Testimonials() {
     if (isAutoPlaying) {
       autoPlayRef.current = window.setInterval(
         () => setCurrentIndex((p) => (p + 1) % testimonials.length),
-        5000
+        5000,
       );
     }
     return () => {
@@ -115,7 +120,7 @@ export function Testimonials() {
 
   const visibleCount = isMobile ? 1 : 3;
   const visibleTestimonials = Array.from({ length: visibleCount }).map(
-    (_, i) => testimonials[(currentIndex + i) % testimonials.length]
+    (_, i) => testimonials[(currentIndex + i) % testimonials.length],
   );
 
   const onKeyDown = (e: React.KeyboardEvent) => {
@@ -175,7 +180,8 @@ export function Testimonials() {
             Elas já vivem o Mulheres VIP Bellas
           </h2>
           <p className="mt-2 opacity-90">
-            Micro-histórias que mostram transformação, economia e pertencimento — do jeito que a mulher real decide.
+            Micro-histórias que mostram transformação, economia e pertencimento
+            — do jeito que a mulher real decide.
           </p>
         </header>
 
@@ -186,7 +192,10 @@ export function Testimonials() {
                 onClick={goToPrevious}
                 aria-label="Depoimento anterior"
                 className="absolute -left-3 top-1/2 z-10 -translate-y-1/2 rounded-full border bg-white p-2 shadow hover:bg-[#FAF8FB] focus-visible:ring-2 focus-visible:ring-[#8E5BAE]"
-                style={{ borderColor: `${COLORS.primary}40`, color: COLORS.primary }}
+                style={{
+                  borderColor: `${COLORS.primary}40`,
+                  color: COLORS.primary,
+                }}
               >
                 <ChevronLeft />
               </button>
@@ -194,7 +203,10 @@ export function Testimonials() {
                 onClick={goToNext}
                 aria-label="Próximo depoimento"
                 className="absolute -right-3 top-1/2 z-10 -translate-y-1/2 rounded-full border bg-white p-2 shadow hover:bg-[#FAF8FB] focus-visible:ring-2 focus-visible:ring-[#8E5BAE]"
-                style={{ borderColor: `${COLORS.primary}40`, color: COLORS.primary }}
+                style={{
+                  borderColor: `${COLORS.primary}40`,
+                  color: COLORS.primary,
+                }}
               >
                 <ChevronRight />
               </button>
@@ -212,24 +224,36 @@ export function Testimonials() {
                 </div>
 
                 <div className="relative">
-                  <div className="mb-3 flex items-center gap-0.5" aria-label={`${t.rating} de 5`}>
+                  <div
+                    className="mb-3 flex items-center gap-0.5"
+                    aria-label={`${t.rating} de 5`}
+                  >
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star
                         key={i}
                         size={16}
-                        className={i < t.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}
+                        className={
+                          i < t.rating
+                            ? "fill-yellow-400 text-yellow-400"
+                            : "text-gray-300"
+                        }
                         aria-hidden
                       />
                     ))}
                   </div>
 
-                  <p className="text-sm md:text-base leading-relaxed">“{t.content}”</p>
+                  <p className="text-sm md:text-base leading-relaxed">
+                    “{t.content}”
+                  </p>
 
                   <div className="mt-5 flex items-center gap-3">
-                    {/* Avatar por iniciais */}
+                    {/* Initials avatar */}
                     <div
                       className="flex h-10 w-10 items-center justify-center rounded-full font-semibold"
-                      style={{ backgroundColor: COLORS.lilacBg, color: COLORS.primary }}
+                      style={{
+                        backgroundColor: COLORS.lilacBg,
+                        color: COLORS.primary,
+                      }}
                       aria-hidden
                     >
                       {initials(t.customerName)}
@@ -260,7 +284,10 @@ export function Testimonials() {
               onClick={goToPrevious}
               aria-label="Depoimento anterior"
               className="rounded-full border bg-white p-2 shadow hover:bg-[#FAF8FB] focus-visible:ring-2 focus-visible:ring-[#8E5BAE]"
-              style={{ borderColor: `${COLORS.primary}40`, color: COLORS.primary }}
+              style={{
+                borderColor: `${COLORS.primary}40`,
+                color: COLORS.primary,
+              }}
             >
               <ChevronLeft />
             </button>
@@ -268,7 +295,10 @@ export function Testimonials() {
               onClick={goToNext}
               aria-label="Próximo depoimento"
               className="rounded-full border bg-white p-2 shadow hover:bg-[#FAF8FB] focus-visible:ring-2 focus-visible:ring-[#8E5BAE]"
-              style={{ borderColor: `${COLORS.primary}40`, color: COLORS.primary }}
+              style={{
+                borderColor: `${COLORS.primary}40`,
+                color: COLORS.primary,
+              }}
             >
               <ChevronRight />
             </button>
@@ -286,7 +316,11 @@ export function Testimonials() {
                 className={`h-2 rounded-full transition-all duration-300 ${
                   active ? "w-8" : "w-2 hover:w-4"
                 }`}
-                style={{ backgroundColor: active ? COLORS.primary : `${COLORS.primary}4D` }}
+                style={{
+                  backgroundColor: active
+                    ? COLORS.primary
+                    : `${COLORS.primary}4D`,
+                }}
               />
             );
           })}

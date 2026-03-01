@@ -22,30 +22,38 @@ const faqData: FAQItem[] = [
     answer: (
       <div className="space-y-4">
         <p className="text-base text-gray-600 sm:text-lg">
-          Escolha com o coração, linda! Cada pacote foi pensado para um momento diferente da sua vida:
+          Escolha com o coração, linda! Cada pacote foi pensado para um momento
+          diferente da sua vida:
         </p>
         <ul className="space-y-3 text-gray-600">
           <li className="flex items-start gap-3 text-base sm:text-lg">
             <Heart className="mt-1 h-5 w-5 text-purple-500" />
             <span>
-              <strong>Relaxamento Básico ou Premium</strong> — Para aquele dia em que você precisa de um cuidado essencial e renovador, sozinha ou para presentear alguém especial.
+              <strong>Relaxamento Básico ou Premium</strong> — Para aquele dia
+              em que você precisa de um cuidado essencial e renovador, sozinha
+              ou para presentear alguém especial.
             </span>
           </li>
           <li className="flex items-start gap-3 text-base sm:text-lg">
             <Heart className="mt-1 h-5 w-5 text-purple-500" />
             <span>
-              <strong>Experiências a Dois</strong> — Quando o momento pede conexão: casal, mãe e filha ou amigas que merecem se cuidar juntas.
+              <strong>Experiências a Dois</strong> — Quando o momento pede
+              conexão: casal, mãe e filha ou amigas que merecem se cuidar
+              juntas.
             </span>
           </li>
           <li className="flex items-start gap-3 text-base sm:text-lg">
             <Heart className="mt-1 h-5 w-5 text-purple-500" />
             <span>
-              <strong>Celebridade ou Dia da Noiva</strong> — Para o dia em que você merece viver o mais alto nível de luxo, atenção e cuidado do início ao fim.
+              <strong>Celebridade ou Dia da Noiva</strong> — Para o dia em que
+              você merece viver o mais alto nível de luxo, atenção e cuidado do
+              início ao fim.
             </span>
           </li>
         </ul>
         <p className="text-base font-medium text-purple-600 sm:text-lg">
-          Não se preocupe — nossa equipe te ajuda a escolher o pacote perfeito no WhatsApp!
+          Não se preocupe — nossa equipe te ajuda a escolher o pacote perfeito
+          no WhatsApp!
         </p>
       </div>
     ),
@@ -61,24 +69,30 @@ const faqData: FAQItem[] = [
           <li className="flex items-center gap-3 text-base sm:text-lg">
             <Clock className="h-5 w-5 text-pink-500" />
             <span>
-              <strong>Pacotes de Relaxamento (Básico e Premium):</strong> 2 horas de puro cuidado
+              <strong>Pacotes de Relaxamento (Básico e Premium):</strong> 2
+              horas de puro cuidado
             </span>
           </li>
           <li className="flex items-center gap-3 text-base sm:text-lg">
             <Clock className="h-5 w-5 text-pink-500" />
             <span>
-              <strong>Experiência a Dois (Casal 2h):</strong> 2 horas de conexão e relaxamento
+              <strong>Experiência a Dois (Casal 2h):</strong> 2 horas de conexão
+              e relaxamento
             </span>
           </li>
           <li className="flex items-center gap-3 text-base sm:text-lg">
             <Clock className="h-5 w-5 text-pink-500" />
             <span>
-              <strong>Experiências Premium (Casal 3h30, Celebridade, Dia da Noiva):</strong> 3h30 de experiência completa
+              <strong>
+                Experiências Premium (Casal 3h30, Celebridade, Dia da Noiva):
+              </strong>{" "}
+              3h30 de experiência completa
             </span>
           </li>
         </ul>
         <p className="text-base text-gray-500 sm:text-lg">
-          Lembre-se: cada minuto é seu. Aproveite cada segundo dessa jornada de autocuidado.
+          Lembre-se: cada minuto é seu. Aproveite cada segundo dessa jornada de
+          autocuidado.
         </p>
       </div>
     ),
@@ -88,15 +102,19 @@ const faqData: FAQItem[] = [
     answer: (
       <div className="space-y-4">
         <p className="text-base text-gray-600 sm:text-lg">
-          Que amor! Presentear uma mulher especial com um Spa Day é uma das formas mais lindas de dizer "eu te amo" ou "você merece ser cuidada".
+          Que amor! Presentear uma mulher especial com um Spa Day é uma das
+          formas mais lindas de dizer "eu te amo" ou "você merece ser cuidada".
         </p>
         <div className="rounded-2xl border border-purple-200 bg-purple-50 p-5">
           <p className="text-base text-purple-700 sm:text-lg">
-            <strong>Dica especial:</strong> Cada voucher vem com uma mensagem personalizada escrita à mão. É emocionante ver o brilho nos olhos daquela pessoa que você ama!
+            <strong>Dica especial:</strong> Cada voucher vem com uma mensagem
+            personalizada escrita à mão. É emocionante ver o brilho nos olhos
+            daquela pessoa que você ama!
           </p>
         </div>
         <p className="text-base text-gray-600 sm:text-lg">
-          Basta falar com nossa equipe no WhatsApp que cuidamos de tudo para você.
+          Basta falar com nossa equipe no WhatsApp que cuidamos de tudo para
+          você.
         </p>
       </div>
     ),
@@ -106,7 +124,8 @@ const faqData: FAQItem[] = [
     answer: (
       <div className="space-y-4">
         <p className="text-base text-gray-600 sm:text-lg">
-          A vida da mulher moderna é cheia de surpresas, e nós entendemos perfeitamente!
+          A vida da mulher moderna é cheia de surpresas, e nós entendemos
+          perfeitamente!
         </p>
         <ul className="space-y-3 text-gray-600">
           <li className="flex items-center gap-3 text-base sm:text-lg">
@@ -123,7 +142,8 @@ const faqData: FAQItem[] = [
           </li>
         </ul>
         <p className="text-base font-medium text-pink-600 sm:text-lg">
-          Não se sinta mal por remarcar. Cuidar de você também significa ter flexibilidade.
+          Não se sinta mal por remarcar. Cuidar de você também significa ter
+          flexibilidade.
         </p>
       </div>
     ),
@@ -137,11 +157,14 @@ const faqData: FAQItem[] = [
         </p>
         <div className="rounded-2xl border border-pink-200 bg-pink-50 p-5">
           <p className="text-base text-pink-700 sm:text-lg">
-            <strong>Tudo incluso:</strong> Toalhas, produtos de qualidade, chá aromático, água infusa e aquele carinho que só nós sabemos dar.
+            <strong>Tudo incluso:</strong> Toalhas, produtos de qualidade, chá
+            aromático, água infusa e aquele carinho que só nós sabemos dar.
           </p>
         </div>
         <p className="text-base text-gray-600 sm:text-lg">
-          Se quiser, pode trazer sua playlist favorita ou um livro para ler durante o spa dos pés. Mas lembre-se: o objetivo é você desligar e se entregar ao momento.
+          Se quiser, pode trazer sua playlist favorita ou um livro para ler
+          durante o spa dos pés. Mas lembre-se: o objetivo é você desligar e se
+          entregar ao momento.
         </p>
       </div>
     ),
@@ -172,7 +195,8 @@ const faqData: FAQItem[] = [
           </li>
         </ul>
         <p className="text-base font-medium text-purple-600 sm:text-lg">
-          💰 O Pix tem 10% de desconto à vista — porque você merece ser reconhecida por cuidar de si!
+          💰 O Pix tem 10% de desconto à vista — porque você merece ser
+          reconhecida por cuidar de si!
         </p>
       </div>
     ),
@@ -182,15 +206,21 @@ const faqData: FAQItem[] = [
     answer: (
       <div className="space-y-4">
         <p className="text-base text-gray-600 sm:text-lg">
-          Claro que sim! Cuidar de si é ainda mais especial quando compartilhamos com quem amamos.
+          Claro que sim! Cuidar de si é ainda mais especial quando
+          compartilhamos com quem amamos.
         </p>
         <div className="rounded-2xl border border-purple-200 bg-purple-50 p-5">
           <p className="text-base text-purple-700 sm:text-lg">
-            <strong>Programa Duas Bellas:</strong> Quando você agenda junto com uma amiga ou filha (a partir de 12 anos), cada uma ganha um spa dos pés bônus para usar depois. É nossa forma de celebrar a conexão feminina!
+            <strong>Programa Duas Bellas:</strong> Quando você agenda junto com
+            uma amiga ou filha (a partir de 12 anos), cada uma ganha um spa dos
+            pés bônus para usar depois. É nossa forma de celebrar a conexão
+            feminina!
           </p>
         </div>
         <p className="text-base text-gray-600 sm:text-lg">
-          Converse com nossa equipe no WhatsApp para agendar juntas e receber o benefício. Também temos pacotes especiais para grupos de noiva e madrinhas!
+          Converse com nossa equipe no WhatsApp para agendar juntas e receber o
+          benefício. Também temos pacotes especiais para grupos de noiva e
+          madrinhas!
         </p>
       </div>
     ),
@@ -269,7 +299,8 @@ export function FAQ() {
             Ainda tem alguma dúvida especial?
           </h3>
           <p className="mx-auto mt-2 max-w-md text-base text-gray-600 sm:text-lg">
-            Nossa equipe está aqui para te acolher e responder com todo carinho do mundo
+            Nossa equipe está aqui para te acolher e responder com todo carinho
+            do mundo
           </p>
           <Button
             variant="outline"
@@ -278,7 +309,7 @@ export function FAQ() {
               window.open(
                 "https://wa.me/5511976820135?text=" +
                   encodeURIComponent("Olá! Tenho uma dúvida sobre o Spa Day"),
-                "_blank"
+                "_blank",
               )
             }
           >

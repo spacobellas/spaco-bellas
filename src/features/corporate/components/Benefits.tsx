@@ -1,8 +1,20 @@
 // src/components/sections/empresas/BeneficiosEmpresas.tsx
-import { HeartHandshake, BarChart3, Users2, Camera, Sparkles, CheckCircle2 } from "lucide-react";
+import {
+  HeartHandshake,
+  BarChart3,
+  Users2,
+  Camera,
+  Sparkles,
+  CheckCircle2,
+} from "lucide-react";
 import cover from "@/assets/images/membership/workshops/waiting.jpg";
 
-const COLORS = { lilacBg: "#F6EDF9", gold: "#C7A45C", primary: "#8E5BAE", text: "#2F2F2F" };
+const COLORS = {
+  lilacBg: "#F6EDF9",
+  gold: "#C7A45C",
+  primary: "#8E5BAE",
+  text: "#2F2F2F",
+};
 
 type Item = {
   icon: React.ComponentType<{ className?: string }>;
@@ -63,7 +75,11 @@ function Pill({ label }: { label: string }) {
   return (
     <span
       className="inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-medium"
-      style={{ backgroundColor: "#FAF8FB", color: COLORS.primary, border: `1px solid ${COLORS.primary}20` }}
+      style={{
+        backgroundColor: "#FAF8FB",
+        color: COLORS.primary,
+        border: `1px solid ${COLORS.primary}20`,
+      }}
     >
       {label}
     </span>
@@ -72,15 +88,27 @@ function Pill({ label }: { label: string }) {
 
 export function Benefits() {
   return (
-    <section className="py-10 md:py-14" style={{ backgroundColor: "#FFFFFF", color: "#2F2F2F" }}>
+    <section
+      className="py-10 md:py-14"
+      style={{ backgroundColor: "#FFFFFF", color: "#2F2F2F" }}
+    >
       <div className="container mx-auto px-4">
-        <img src={cover} alt="" className="mx-auto h-28 w-full max-w-3xl rounded-xl object-cover" loading="lazy" />
+        <img
+          src={cover}
+          alt=""
+          className="mx-auto h-28 w-full max-w-3xl rounded-xl object-cover"
+          loading="lazy"
+        />
         <header className="mx-auto max-w-3xl text-center mt-4">
-          <h2 className="text-2xl md:text-3xl font-semibold" style={{ color: COLORS.gold }}>
+          <h2
+            className="text-2xl md:text-3xl font-semibold"
+            style={{ color: COLORS.gold }}
+          >
             Um spa com alma — agora dentro da sua empresa.
           </h2>
           <p className="mt-2 opacity-90">
-            Transformamos o autocuidado em experiência completa para empresas, escolas e condomínios, com impacto humano e valor estratégico.
+            Transformamos o autocuidado em experiência completa para empresas,
+            escolas e condomínios, com impacto humano e valor estratégico.
           </p>
         </header>
 
@@ -93,13 +121,19 @@ export function Benefits() {
             >
               <div
                 className="absolute inset-x-0 top-0 h-1"
-                style={{ background: "linear-gradient(90deg, #8E5BAE 0%, rgba(199,164,92,0.7) 50%, #8E5BAE 100%)" }}
+                style={{
+                  background:
+                    "linear-gradient(90deg, #8E5BAE 0%, rgba(199,164,92,0.7) 50%, #8E5BAE 100%)",
+                }}
                 aria-hidden
               />
               <div className="flex items-center gap-3">
                 <span
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full"
-                  style={{ background: "#F6EDF9", boxShadow: `0 0 0 2px ${COLORS.gold}` }}
+                  style={{
+                    background: "#F6EDF9",
+                    boxShadow: `0 0 0 2px ${COLORS.gold}`,
+                  }}
                   aria-hidden
                 >
                   <it.icon className="text-[#8E5BAE]" />
@@ -118,7 +152,11 @@ export function Benefits() {
               <ul className="mt-4 space-y-2 text-sm">
                 {it.bullets.map((b, i) => (
                   <li key={i} className="flex items-start gap-2">
-                    <CheckCircle2 size={18} className="mt-0.5 text-emerald-600" aria-hidden />
+                    <CheckCircle2
+                      size={18}
+                      className="mt-0.5 text-emerald-600"
+                      aria-hidden
+                    />
                     <span>{b}</span>
                   </li>
                 ))}
@@ -136,7 +174,11 @@ export function Benefits() {
         <div className="mt-6 flex w-full items-center justify-center">
           <span
             className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs"
-            style={{ backgroundColor: "#FAF8FB", color: COLORS.primary, border: `1px solid ${COLORS.primary}20` }}
+            style={{
+              backgroundColor: "#FAF8FB",
+              color: COLORS.primary,
+              border: `1px solid ${COLORS.primary}20`,
+            }}
           >
             <Sparkles size={14} />
             Propósito com entregas executivas

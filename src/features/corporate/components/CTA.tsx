@@ -10,24 +10,28 @@ export function CTA() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_COMERCIAL}?text=${encodeURIComponent("Olá! Quero meu orçamento agora do Bellas Corporativo.")}`;
 
   return (
-    <section 
-      className="relative py-12 md:py-16 overflow-hidden" 
+    <section
+      className="relative py-12 md:py-16 overflow-hidden"
       style={{ backgroundColor: "#F6EDF9", color: "#2F2F2F" }}
     >
       <div className="absolute inset-0 -z-10">
-        <img 
-          src={bg} 
-          alt="" 
-          className="h-full w-full object-cover opacity-10" 
-          loading="lazy" 
+        <img
+          src={bg}
+          alt=""
+          className="h-full w-full object-cover opacity-10"
+          loading="lazy"
         />
       </div>
       <div className="container mx-auto px-4 text-center relative">
-        <h2 className="text-2xl md:text-3xl font-semibold" style={{ color: "#C7A45C" }}>
+        <h2
+          className="text-2xl md:text-3xl font-semibold"
+          style={{ color: "#C7A45C" }}
+        >
           Hoje é um ótimo dia para investir em quem faz a sua empresa acontecer.
         </h2>
         <p className="mt-2 opacity-90">
-          Enquanto outras empresas tentam parecer humanas, a sua será lembrada por ser.
+          Enquanto outras empresas tentam parecer humanas, a sua será lembrada
+          por ser.
         </p>
         <a
           href={whatsappUrl}

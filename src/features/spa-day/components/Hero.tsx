@@ -5,7 +5,8 @@ import heroImage from "@/assets/images/membership/Luxury_spa_treatment_room_eeed
 import { buildWhatsAppUrl, WHATSAPP_MESSAGES } from "@/config/contacts";
 
 // Main VSL
-const VSL_EMBED_URL = "https://www.youtube.com/embed/Fk4GrdnhFyA?si=DBixnEMgddCon8iY";
+const VSL_EMBED_URL =
+  "https://www.youtube.com/embed/Fk4GrdnhFyA?si=DBixnEMgddCon8iY";
 
 interface HeroProps {
   title?: string;
@@ -80,7 +81,9 @@ export function Hero({
                 variant="outline"
                 className="w-full rounded-full border-2 border-white bg-white/10 px-6 py-5 text-base font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 sm:w-auto sm:px-8 sm:py-6"
                 onClick={() =>
-                  document.getElementById("spa-day")?.scrollIntoView({ behavior: "smooth" })
+                  document
+                    .getElementById("spa-day")
+                    ?.scrollIntoView({ behavior: "smooth" })
                 }
               >
                 <Sparkles className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
@@ -107,16 +110,28 @@ export function Hero({
           {/* Metrics */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 pt-4 sm:pt-8 md:pt-10 pb-6 sm:pb-10 max-w-3xl mx-auto">
             <div className="space-y-1 sm:space-y-2">
-              <div className="text-3xl sm:text-4xl font-bold text-white">2.500+</div>
-              <div className="text-sm sm:text-base text-white/80">Clientes Satisfeitas</div>
+              <div className="text-3xl sm:text-4xl font-bold text-white">
+                2.500+
+              </div>
+              <div className="text-sm sm:text-base text-white/80">
+                Clientes Satisfeitas
+              </div>
             </div>
             <div className="space-y-1 sm:space-y-2">
-              <div className="text-3xl sm:text-4xl font-bold text-white">4.9</div>
-              <div className="text-sm sm:text-base text-white/80">Avaliação Média</div>
+              <div className="text-3xl sm:text-4xl font-bold text-white">
+                4.9
+              </div>
+              <div className="text-sm sm:text-base text-white/80">
+                Avaliação Média
+              </div>
             </div>
             <div className="space-y-1 sm:space-y-2">
-              <div className="text-3xl sm:text-4xl font-bold text-white">10 anos</div>
-              <div className="text-sm sm:text-base text-white/80">De Excelência</div>
+              <div className="text-3xl sm:text-4xl font-bold text-white">
+                10 anos
+              </div>
+              <div className="text-sm sm:text-base text-white/80">
+                De Excelência
+              </div>
             </div>
           </div>
         </div>
@@ -124,7 +139,9 @@ export function Hero({
         {/* Scroll Down Button */}
         <button
           onClick={() =>
-            document.getElementById("spa-day")?.scrollIntoView({ behavior: "smooth" })
+            document
+              .getElementById("spa-day")
+              ?.scrollIntoView({ behavior: "smooth" })
           }
           className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-2 text-white/80 hover:text-white transition-all duration-300 group"
           aria-label="Rolar para baixo"

@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
  */
 export function useScrollSpy(
   itemIds: string[],
-  options: { offset?: number; threshold?: number } = {}
+  options: { offset?: number; threshold?: number } = {},
 ): string {
   const [activeId, setActiveId] = useState<string>(itemIds[0] || "");
   const { offset = 100 } = options;

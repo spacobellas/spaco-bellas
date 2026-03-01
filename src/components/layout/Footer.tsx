@@ -3,7 +3,11 @@ import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { CONTACT_CONFIG, buildWhatsAppUrl, WHATSAPP_MESSAGES } from "@/config/contacts";
+import {
+  CONTACT_CONFIG,
+  buildWhatsAppUrl,
+  WHATSAPP_MESSAGES,
+} from "@/config/contacts";
 
 const SOCIAL_LINKS = {
   INSTAGRAM: "https://instagram.com/spacobellasoficial",
@@ -45,7 +49,8 @@ export function Footer() {
     if (element) {
       const headerOffset = 100;
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
 
       window.scrollTo({
         top: offsetPosition,
@@ -86,7 +91,8 @@ export function Footer() {
               <h3 className="text-2xl font-bold">Spaço Bellas</h3>
             </div>
             <p className="text-gray-400 leading-relaxed">
-              Spa Day das Celebridades: onde toda mulher vive seu dia de estrela.
+              Spa Day das Celebridades: onde toda mulher vive seu dia de
+              estrela.
             </p>
             <div className="flex gap-4">
               {/* Instagram */}
@@ -99,7 +105,7 @@ export function Footer() {
               >
                 <FaInstagram className="w-5 h-5 text-white" />
               </a>
-              
+
               {/* Facebook */}
               <a
                 href={SOCIAL_LINKS.FACEBOOK}
@@ -110,7 +116,7 @@ export function Footer() {
               >
                 <FaFacebook className="w-5 h-5 text-white" />
               </a>
-              
+
               {/* WhatsApp */}
               <a
                 href={buildWhatsAppUrl(WHATSAPP_MESSAGES.GENERAL)}
@@ -157,13 +163,19 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3 text-gray-400">
                 <Phone className="w-5 h-5 flex-shrink-0 text-[var(--primary-purple)]" />
-                <a href={`tel:${CONTACT_CONFIG.WHATSAPP_NUMBER}`} className="hover:text-white transition-colors text-sm">
+                <a
+                  href={`tel:${CONTACT_CONFIG.WHATSAPP_NUMBER}`}
+                  className="hover:text-white transition-colors text-sm"
+                >
                   {CONTACT_CONFIG.PHONE_DISPLAY}
                 </a>
               </li>
               <li className="flex items-center gap-3 text-gray-400">
                 <Mail className="w-5 h-5 flex-shrink-0 text-[var(--primary-purple)]" />
-                <a href={`mailto:${SOCIAL_LINKS.EMAIL}`} className="hover:text-white transition-colors text-sm">
+                <a
+                  href={`mailto:${SOCIAL_LINKS.EMAIL}`}
+                  className="hover:text-white transition-colors text-sm"
+                >
                   {SOCIAL_LINKS.EMAIL}
                 </a>
               </li>
@@ -185,9 +197,13 @@ export function Footer() {
               Receba novidades exclusivas 💜
             </h4>
             <p className="text-gray-400 mb-6">
-              Cadastre-se para receber promoções especiais e dicas de autocuidado
+              Cadastre-se para receber promoções especiais e dicas de
+              autocuidado
             </p>
-            <form onSubmit={handleSubscribe} className="flex gap-4 max-w-md mx-auto">
+            <form
+              onSubmit={handleSubscribe}
+              className="flex gap-4 max-w-md mx-auto"
+            >
               <Input
                 type="email"
                 placeholder="Seu melhor e-mail"
@@ -211,7 +227,15 @@ export function Footer() {
         <div className="border-t border-white/10 pt-8 text-center text-gray-400 text-sm">
           <p>© {currentYear} Spaço Bellas</p>
           <p className="mt-2">
-            Feito com 💜 por <a href="https://starttecnologico.com/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition">Start Tecnológico</a>
+            Feito com 💜 por{" "}
+            <a
+              href="https://starttecnologico.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition"
+            >
+              Start Tecnológico
+            </a>
           </p>
         </div>
       </div>
