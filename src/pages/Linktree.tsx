@@ -49,18 +49,18 @@ const paletteOf = (id: string) =>
 
 const links: LinkItem[] = [
   {
-    id: "celebridades",
-    title: "SPA DAY CELEBRIDADES",
-    subtitle: "Viva seu Dia de Estrela",
-    href: "/spa-celebridades",
-    Icon: FaStar,
-  },
-  {
     id: "casal",
     title: "SPA DAY CASAL",
     subtitle: "Conexão e Bem-Estar a Dois",
     href: "/spa-casal",
     Icon: FaHeart,
+  },
+  {
+    id: "celebridades",
+    title: "SPA DAY CELEBRIDADES",
+    subtitle: "Viva seu Dia de Estrela",
+    href: "/spa-celebridades",
+    Icon: FaStar,
   },
   {
     id: "noiva",
