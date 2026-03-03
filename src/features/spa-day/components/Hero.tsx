@@ -5,8 +5,7 @@ import heroImage from "@/assets/images/membership/Luxury_spa_treatment_room_eeed
 import { buildWhatsAppUrl, WHATSAPP_MESSAGES } from "@/config/contacts";
 
 // Main VSL
-const VSL_EMBED_URL =
-  "https://www.youtube.com/embed/Fk4GrdnhFyA?si=DBixnEMgddCon8iY";
+const VSL_EMBED_URL = "https://www.youtube.com/embed/cj2Vsl8puzE";
 
 interface HeroProps {
   title?: string;
@@ -64,32 +63,6 @@ export function Hero({
             <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed">
               {subtitle}
             </p>
-
-            {/* CTA Buttons */}
-            <div className="mt-6 flex flex-col items-stretch justify-center gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
-              <Button
-                size="lg"
-                className="w-full rounded-full bg-gradient-to-r from-purple-600 to-purple-700 px-6 py-5 text-base font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:from-purple-700 hover:to-purple-800 hover:shadow-2xl sm:w-auto sm:px-8 sm:py-6"
-                onClick={() => window.open(whatsappUrl, "_blank")}
-              >
-                <Heart className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                Quero meu Spa Day
-              </Button>
-
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full rounded-full border-2 border-white bg-white/10 px-6 py-5 text-base font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 sm:w-auto sm:px-8 sm:py-6"
-                onClick={() =>
-                  document
-                    .getElementById("spa-day")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-              >
-                <Sparkles className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                Ver pacotes
-              </Button>
-            </div>
           </div>
 
           {/* VSL */}

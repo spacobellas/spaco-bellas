@@ -26,7 +26,10 @@ export default function SpaCasal() {
           showVSL={true}
         />
         <div id="spa-day">
-          <SpaDayPackages packages={packagesCasal} />
+          <SpaDayPackages
+            packages={packagesCasal}
+            description="Cada experiência foi pensada para transformar seu momento em algo inesquecível. Ideal também para Mãe e filha, amigas, presentear alguém que ama."
+          />
         </div>
         <Testimonials />
         <FAQ />

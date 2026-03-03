@@ -159,7 +159,12 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-gray-400">
                 <MapPin className="w-5 h-5 flex-shrink-0 mt-1 text-[var(--primary-purple)]" />
-                <span className="text-sm">{CONTACT_CONFIG.ADDRESS}</span>
+                <div className="text-sm">
+                  <div>{CONTACT_CONFIG.ADDRESS}</div>
+                  <div className="text-xs text-gray-500 mt-1">
+                    Ref: {CONTACT_CONFIG.ADDRESS_REFERENCE}
+                  </div>
+                </div>
               </li>
               <li className="flex items-center gap-3 text-gray-400">
                 <Phone className="w-5 h-5 flex-shrink-0 text-[var(--primary-purple)]" />

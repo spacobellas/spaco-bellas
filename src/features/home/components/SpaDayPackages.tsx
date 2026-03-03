@@ -17,9 +17,13 @@ const WHATSAPP_NUMBER = "5511976820135";
 
 interface SpaDaySectionProps {
   packages: SpaPackage[];
+  description?: string;
 }
 
-export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
+export function SpaDayPackages({
+  packages,
+  description = "Cada experiência foi pensada para transformar seu momento em algo inesquecível",
+}: SpaDaySectionProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -114,7 +118,9 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
 
   // ── CTA Action ───────────────────────────────────────────────────────────
   const handleCtaClick = (pkg: SpaPackage) => {
-    if (pkg.pageUrl) {
+    if (pkg.whatsappUrl) {
+      window.open(pkg.whatsappUrl, "_blank", "noopener,noreferrer");
+    } else if (pkg.pageUrl) {
       navigate(pkg.pageUrl);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
@@ -167,8 +173,7 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
             Escolha o seu dia perfeito
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg">
-            Cada experiência foi pensada para transformar seu momento em algo
-            inesquecível
+            {description}
           </p>
         </div>
 
@@ -235,7 +240,8 @@ export function SpaDayPackages({ packages }: { packages: SpaPackage[] }) {
           >
             {packages.map((pkg, index) => {
               const IconComponent = pkg.icon;
-              const isNav = !!pkg.pageUrl;
+              const hasDirectUrl = !!pkg.whatsappUrl;
+              const isNav = !!pkg.pageUrl && !hasDirectUrl;
               const isActive = index === activeIndex;
 
               return (

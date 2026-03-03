@@ -7,7 +7,8 @@ export const CONTACT_CONFIG = {
   WHATSAPP_NUMBER: "5511976820135",
   PHONE_DISPLAY: "(11) 97682-0135",
   INSTAGRAM_HANDLE: "@spacobellas",
-  ADDRESS: "Rua Exemplo, 123 - São Paulo, SP",
+  ADDRESS: "Rua Antônio Fortunato, 678 - Burgo Paulista, São Paulo - SP",
+  ADDRESS_REFERENCE: "5 minutos do Metrô Patriarca",
 } as const;
 
 /**
