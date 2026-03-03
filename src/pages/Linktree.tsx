@@ -1,6 +1,14 @@
 import React from "react";
 import { Link } from "wouter";
-import { FaBuilding, FaStar, FaCrown, FaWhatsapp, FaGem } from "react-icons/fa";
+import {
+  FaBuilding,
+  FaStar,
+  FaCrown,
+  FaWhatsapp,
+  FaGem,
+  FaHeart,
+  FaUser,
+} from "react-icons/fa";
 import { Building2 } from "lucide-react";
 
 import spacoBellasLogo from "@/assets/images/brand/logo.jpg";
@@ -27,6 +35,9 @@ const PALETTE_BY_ID: Record<string, { base: string; accent: string }> = {
   institucional: { base: "#7C3AED", accent: "#A78BFA" }, // purple
   "mensal-bellas": { base: "#D97706", accent: "#F59E0B" }, // amber
   celebridades: { base: "#06B6D4", accent: "#22D3EE" }, // cyan
+  individual: { base: "#EC4899", accent: "#F472B6" }, // pink
+  casal: { base: "#8B5CF6", accent: "#A78BFA" }, // violet
+  noiva: { base: "#F43F5E", accent: "#FB7185" }, // rose
   vip: { base: "#E11D48", accent: "#FB7185" }, // pink
   empresas: { base: "#0EA5E9", accent: "#38BDF8" }, // blue
   whatsapp: { base: "#16A34A", accent: "#22C55E" }, // green
@@ -39,10 +50,24 @@ const paletteOf = (id: string) =>
 const links: LinkItem[] = [
   {
     id: "celebridades",
-    title: "SPA DAS CELEBRIDADES",
+    title: "SPA DAY CELEBRIDADES",
     subtitle: "Viva seu Dia de Estrela",
     href: "/spa-celebridades",
     Icon: FaStar,
+  },
+  {
+    id: "casal",
+    title: "SPA DAY CASAL",
+    subtitle: "Conexão e Bem-Estar a Dois",
+    href: "/spa-casal",
+    Icon: FaHeart,
+  },
+  {
+    id: "noiva",
+    title: "SPA DAY NOIVA",
+    subtitle: "O Seu Grande Dia",
+    href: "/spa-diadanoiva",
+    Icon: FaCrown,
   },
   {
     id: "whatsapp",
@@ -50,13 +75,6 @@ const links: LinkItem[] = [
     subtitle: "WhatsApp Direto",
     href: "/whatsapp",
     Icon: FaWhatsapp,
-  },
-  {
-    id: "vip",
-    title: "GRUPO VIP",
-    subtitle: "Pré-Lançamento com Bônus Exclusivo",
-    href: "/whatsapp/grupo-vip",
-    Icon: FaCrown,
   },
   {
     id: "mensal-bellas",
@@ -68,15 +86,15 @@ const links: LinkItem[] = [
   {
     id: "empresas",
     title: "BELLA EMPRESAS",
-    subtitle: "Bem‑estar, Propósito e Alta Performance no Seu Time",
+    subtitle: "Bem‑estar no Seu Time",
     href: "/empresas",
     Icon: Building2,
   },
   {
     id: "institucional",
-    title: "INSTITUCIONAL",
-    subtitle: "Conheça o Spaço Bellas",
-    href: "/institucional",
+    title: "CONHEÇA O SPAÇO BELLAS",
+    subtitle: "Nossa História e Estrutura",
+    href: "/home",
     Icon: FaBuilding,
   },
   {
@@ -280,6 +298,7 @@ export default function Linktree() {
         }}
       >
         <div>{CONTACT_CONFIG.ADDRESS}</div>
+        <div>{CONTACT_CONFIG.ADDRESS_REFERENCE}</div>
         <div>WhatsApp: {CONTACT_CONFIG.PHONE_DISPLAY}</div>
         <div className="pt-4 text-xs opacity-75">
           © {new Date().getFullYear()} Spaço Bellas - Todos os direitos

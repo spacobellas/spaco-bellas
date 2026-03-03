@@ -24,6 +24,7 @@ Spaço Bellas is a professional, high-performance web platform for a luxury Beau
 ## 🛠 Tech Stack
 
 ### Frontend
+
 - **Framework:** [React 18](https://reactjs.org/) with [TypeScript](https://www.typescriptlang.org/)
 - **Build Tool:** [Vite](https://vitejs.dev/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/) (Utility-first CSS)
@@ -34,6 +35,7 @@ Spaço Bellas is a professional, high-performance web platform for a luxury Beau
 - **Forms:** [React Hook Form](https://react-hook-form.com/) with [Zod](https://zod.dev/) validation
 
 ### Backend & Database (Infrastructure)
+
 - **ORM:** [Drizzle ORM](https://orm.drizzle.team/)
 - **Database:** PostgreSQL (Supabase)
 - **Server:** Express.js (API & Middleware support)
@@ -64,18 +66,21 @@ src/
 ## 🏁 Getting Started
 
 ### Prerequisites
+
 - [Node.js](https://nodejs.org/) (LTS or higher)
 - [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/emanuellcs/spaco-bellas.git
    cd spaco-bellas
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
@@ -86,6 +91,7 @@ src/
    ```
 
 ### Building for Production
+
 ```bash
 npm run build
 ```

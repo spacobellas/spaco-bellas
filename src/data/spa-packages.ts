@@ -18,8 +18,12 @@ export interface SpaPackage {
   ctaLabel: string;
   ctaIcon: LucideIcon;
   /**
+   * If defined, the CTA opens this direct URL (e.g. wa.link).
+   * Takes precedence over pageUrl and whatsappText.
+   */
+  whatsappUrl?: string;
+  /**
    * If defined, the CTA navigates to this internal route.
-   * If undefined, the CTA opens WhatsApp.
    */
   pageUrl?: string;
 }
@@ -45,6 +49,7 @@ export const allSpaPackages: SpaPackage[] = [
     badgeColor: "bg-pink-500",
     whatsappText:
       "Olá! Vim pelo site e tenho interesse no Spa Day Individual Básico!",
+    whatsappUrl: "https://wa.link/tzjng9",
     ctaLabel: "Ver detalhes deste pacote",
     ctaIcon: Star,
     pageUrl: "/spa-individual",
@@ -73,13 +78,14 @@ export const allSpaPackages: SpaPackage[] = [
     badgeColor: "bg-purple-500",
     whatsappText:
       "Olá! Vim pelo site e tenho interesse no Spa Day Relaxamento Individual Premium!",
+    whatsappUrl: "https://wa.link/mi1ejq",
     ctaLabel: "Ver detalhes deste pacote",
     ctaIcon: Heart,
     pageUrl: "/spa-individual",
   },
   {
     id: "casal-2h",
-    tier: "Spa Day Casal — 2h",
+    tier: "Spa Day Casal Conexão",
     price: 697,
     installment: "12x de R$ 69,70",
     cash: "R$ 697 à vista no Pix",
@@ -96,14 +102,16 @@ export const allSpaPackages: SpaPackage[] = [
     icon: Heart,
     badge: null,
     badgeColor: "bg-fuchsia-500",
-    whatsappText: "Olá! Vim pelo site e tenho interesse no Spa Day Casal (2h)!",
+    whatsappText:
+      "Olá! Vim pelo site e tenho interesse no Spa Day Casal Conexão!",
+    whatsappUrl: "https://wa.link/fcffui",
     ctaLabel: "Ver detalhes deste pacote",
     ctaIcon: Heart,
     pageUrl: "/spa-casal",
   },
   {
     id: "casal-3h30",
-    tier: "Spa Day Casal — 3h30",
+    tier: "Spa Day Casal Premium",
     price: 897,
     installment: "12x de R$ 89,70",
     cash: "R$ 897 à vista no Pix",
@@ -129,7 +137,8 @@ export const allSpaPackages: SpaPackage[] = [
     badge: "Mais Vendido!",
     badgeColor: "bg-purple-600",
     whatsappText:
-      "Olá! Vim pelo site e tenho interesse no Spa Day Casal (3h30)!",
+      "Olá! Vim pelo site e tenho interesse no Spa Day Casal Premium!",
+    whatsappUrl: "https://wa.link/nv3yn9",
     ctaLabel: "Ver detalhes deste pacote",
     ctaIcon: Crown,
     pageUrl: "/spa-casal",
@@ -172,6 +181,7 @@ export const allSpaPackages: SpaPackage[] = [
     badgeColor: "bg-amber-500",
     whatsappText:
       "Olá! Vim pelo site e tenho interesse no Spa Day Celebridade!",
+    whatsappUrl: "https://wa.link/d3s8sy",
     ctaLabel: "Quero meu Spa Day Celebridade",
     ctaIcon: Sparkles,
   },
@@ -212,6 +222,7 @@ export const allSpaPackages: SpaPackage[] = [
     badge: "💍 Exclusivo Noiva",
     badgeColor: "bg-rose-500",
     whatsappText: "Olá! Vim pelo site e tenho interesse no Spa Dia da Noiva!",
+    whatsappUrl: "https://wa.link/vrm28b",
     ctaLabel: "Quero meu Spa Dia da Noiva",
     ctaIcon: Heart,
   },
@@ -229,14 +240,25 @@ const withWhatsApp = (pkgs: SpaPackage[]): SpaPackage[] =>
  * Cards with pageUrl navigate to the dedicated sub-page.
  * "Celebridade" card (without pageUrl) goes directly to WhatsApp.
  */
-export const packagesCelebridades = allSpaPackages.filter((p) =>
-  [
-    "individual-basico",
-    "individual-premium",
-    "casal-3h30",
-    "celebridade",
-  ].includes(p.id),
-);
+export const packagesCelebridades = allSpaPackages
+  .filter((p) =>
+    [
+      "individual-basico",
+      "individual-premium",
+      "casal-3h30",
+      "celebridade",
+    ].includes(p.id),
+  )
+  .map((p) => {
+    if (p.id === "casal-3h30") {
+      return {
+        ...p,
+        tier: "Spa Day Casal",
+        whatsappUrl: "https://wa.link/oystpj",
+      };
+    }
+    return p;
+  });
 
 /** /spa-individual — Ideal for a solo relaxation moment. Buttons open WhatsApp. */
 export const packagesIndividual = withWhatsApp(

@@ -15,18 +15,14 @@ import SpaNoiva from "@/pages/SpaNoiva";
 import WhatsAppRedirect from "@/pages/WhatsAppRedirect";
 import Empresas from "@/pages/Empresas";
 import NaoEncontrado from "@/pages/NaoEncontrado";
-
-// New page: Mulheres VIP Bellas
 import MensalBellas from "@/pages/MensalBellas";
 
 function Router() {
   return (
     <Switch>
-      {/* Main page - Linktree style */}
+      {/* Main page */}
       <Route path="/" component={Linktree} />
-
-      {/* Institutional landing page */}
-      <Route path="/institucional" component={Home} />
+      <Route path="/home" component={Home} />
 
       {/* Spa Day landing pages */}
       <Route path="/spa-celebridades" component={SpaCelebridades} />
@@ -34,7 +30,7 @@ function Router() {
       <Route path="/spa-casal" component={SpaCasal} />
       <Route path="/spa-diadanoiva" component={SpaNoiva} />
 
-      {/* NEW: Mulheres VIP Bellas Program */}
+      {/* Mulheres VIP Bellas Program */}
       <Route path="/mensal-bellas" component={MensalBellas} />
       {/* Optional alias for marketing/SEO */}
       <Route path="/mulheres-vip-bellas" component={MensalBellas} />
