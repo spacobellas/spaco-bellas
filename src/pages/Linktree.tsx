@@ -6,6 +6,7 @@ import {
   FaCrown,
   FaWhatsapp,
   FaGem,
+  FaBookOpen,
   FaHeart,
   FaUser,
 } from "react-icons/fa";
@@ -48,6 +49,13 @@ const paletteOf = (id: string) =>
   PALETTE_BY_ID[id] ?? { base: "#334155", accent: "#64748B" };
 
 const links: LinkItem[] = [
+    {
+    id: "revista",
+    title: "REVISTA SPAÇO BELLAS",
+    subtitle: "Exclusive Experience",
+    href: "/revista",
+    Icon: FaBookOpen,
+  },
   {
     id: "casal",
     title: "SPA DAY CASAL",
