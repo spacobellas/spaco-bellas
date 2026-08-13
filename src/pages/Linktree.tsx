@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 import { Building2 } from "lucide-react";
 
-import spacoBellasLogo from "@/assets/images/brand/logo.jpeg";
+import spacoBellasLogo from "@/assets/images/brand/Logo.jpeg";
 import spacoBellasBackground from "@/assets/images/brand/hero-bg.png";
 import {
   CONTACT_CONFIG,
