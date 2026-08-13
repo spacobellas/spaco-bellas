@@ -51,10 +51,17 @@ const paletteOf = (id: string) =>
 const links: LinkItem[] = [
     {
     id: "revista",
-    title: "REVISTA SPAÇO BELLAS",
-    subtitle: "Exclusive Experience",
+    title: "REVISTA & CATÁLOGO",
+    subtitle: "Seu Shopping da Beleza",
     href: "/revista",
     Icon: FaBookOpen,
+  },
+    {
+    id: "noiva",
+    title: "SPA DIA DA NOIVA",
+    subtitle: "O Seu Grande Dia",
+    href: "/spa-diadanoiva",
+    Icon: FaCrown,
   },
   {
     id: "casal",
@@ -64,26 +71,13 @@ const links: LinkItem[] = [
     Icon: FaHeart,
   },
   {
-    id: "celebridades",
-    title: "SPA DAY CELEBRIDADES",
-    subtitle: "Viva seu Dia de Estrela",
-    href: "/spa-celebridades",
-    Icon: FaStar,
-  },
-  {
-    id: "noiva",
-    title: "SPA DAY NOIVA",
-    subtitle: "O Seu Grande Dia",
-    href: "/spa-diadanoiva",
-    Icon: FaCrown,
-  },
-  {
     id: "whatsapp",
-    title: "ATENDIMENTO",
-    subtitle: "WhatsApp Direto",
+    title: "CHAMA A BELLA",
+    subtitle: "Agende aqui seu momento!",
     href: "/whatsapp",
     Icon: FaWhatsapp,
   },
+/* retirado da pagina principal
   {
     id: "mensal-bellas",
     title: "PROGRAMA VIP BELLAS",
@@ -113,6 +107,14 @@ const links: LinkItem[] = [
     Icon: FaBuilding,
     external: true,
   },
+    {
+    id: "celebridades",
+    title: "SPA DAY CELEBRIDADES",
+    subtitle: "Viva seu Dia de Estrela",
+    href: "/spa-celebridades",
+    Icon: FaStar,
+  },
+*/
 ];
 
 /**
