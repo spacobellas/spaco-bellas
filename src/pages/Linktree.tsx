@@ -52,8 +52,8 @@ const paletteOf = (id: string) =>
 const links: LinkItem[] = [
     {
     id: "revista",
-    title: "REVISTA & CATÁLOGO",
-    subtitle: "Seu Shopping da Beleza",
+    title: "REVISTA LUZIBELLA",
+    subtitle: "Nosso Catálogo Digital",
     href: "/revista",
     Icon: FaBookOpen,
   },
