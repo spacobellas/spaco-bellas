@@ -16,6 +16,7 @@ import WhatsAppRedirect from "@/pages/WhatsAppRedirect";
 import Empresas from "@/pages/Empresas";
 import NaoEncontrado from "@/pages/NaoEncontrado";
 import MensalBellas from "@/pages/MensalBellas";
+import RevistaRedirect from "@/pages/RevistaRedirect";
 
 function Router() {
   return (
@@ -37,6 +38,8 @@ function Router() {
 
       <Route path="/empresas" component={Empresas} />
 
+      <Route path="/revista" component={RevistaRedirect} />
+      
       {/* WhatsApp - Direct */}
       <Route path="/whatsapp" component={WhatsAppRedirect} />
 
