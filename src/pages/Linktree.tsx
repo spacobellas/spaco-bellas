@@ -43,6 +43,7 @@ const PALETTE_BY_ID: Record<string, { base: string; accent: string }> = {
   empresas: { base: "#0EA5E9", accent: "#38BDF8" }, // blue
   whatsapp: { base: "#16A34A", accent: "#22C55E" }, // green
   crm: { base: "#111827", accent: "#06B6D4" }, // dark
+  revista: { base: "#B8860B", accent: "#E5C76B" }, //dourado
 };
 
 const paletteOf = (id: string) =>
@@ -149,10 +150,10 @@ export default function Linktree() {
             />
           </div>
           <h1 className="text-4xl font-bold mb-2 text-white drop-shadow-2xl">
-            Spaço Bellas
+            Spaço LuziBella
           </h1>
           <p className="text-pink-100 text-center text-lg font-semibold drop-shadow-lg">
-            Especialista em Beleza e Bem-Estar!
+            Seu Shopping da Beleza!
           </p>
         </div>
       </div>
@@ -237,7 +238,7 @@ export default function Linktree() {
       {/* Social Media Icons */}
       <div className="flex items-center justify-center gap-8 mb-8 bg-white rounded-full px-12 py-4 shadow-lg border border-pink-200">
         <a
-          href="https://instagram.com/spacobellasoficial"
+          href="https://instagram.com/spacoluzibella"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-500 hover:text-pink-500 transition-colors cursor-pointer"
@@ -273,7 +274,7 @@ export default function Linktree() {
           </svg>
         </a>
         <a
-          href="https://tiktok.com/@spacobellasoficial"
+          href="https://tiktok.com/@spacoluzibella"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-500 hover:text-pink-500 transition-colors cursor-pointer"
@@ -311,7 +312,7 @@ export default function Linktree() {
         <div>{CONTACT_CONFIG.ADDRESS_REFERENCE}</div>
         <div>WhatsApp: {CONTACT_CONFIG.PHONE_DISPLAY}</div>
         <div className="pt-4 text-xs opacity-75">
-          © {new Date().getFullYear()} Spaço Bellas - Todos os direitos
+          © {new Date().getFullYear()} Spaço Luzibella - Todos os direitos
           reservados
         </div>
       </footer>
